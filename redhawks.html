@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mi sitio 100% gratis</title>
+  <meta name="description" content="Sitio estático sencillo, rápido y sin costo" />
+  <style>
+    :root{
+      --bg: #0f172a; /* slate-900 */
+      --card:#111827; /* gray-900 */
+      --txt:#e5e7eb; /* gray-200 */
+      --muted:#94a3b8; /* slate-400 */
+      --brand:#22d3ee; /* cyan-400 */
+      --accent:#a78bfa; /* violet-400 */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 24px;position:sticky;top:0;background:linear-gradient(180deg, rgba(15,23,42,.95), rgba(15,23,42,.6));backdrop-filter:blur(6px);border-bottom:1px solid #1f2937}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#0b1020;font-weight:900}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{font-weight:600;color:var(--txt)}
+    nav a:hover{color:var(--brand)}
+
+    .hero{padding:80px 24px}
+    .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+    .card{background:var(--card);border:1px solid #1f2937;border-radius:18px;padding:24px}
+    h1{font-size:clamp(28px,6vw,48px);line-height:1.1;margin:0 0 12px}
+    p{color:var(--muted);line-height:1.6}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#0b1020;font-weight:800;border:none}
+    .btn:hover{filter:brightness(1.05)}
+    .grid{display:grid;gap:18px}
+    .features{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+
+    section{padding:48px 24px}
+    h2{font-size:clamp(22px,4vw,32px);margin:0 0 12px}
+    .muted{color:var(--muted)}
+
+    .kbd{border:1px solid #334155;border-radius:8px;padding:2px 6px;background:#0b1020;color:var(--txt);font-weight:700}
+
+    footer{padding:32px 24px;border-top:1px solid #1f2937;color:var(--muted)}
+
+    /* responsive tweaks */
+    @media (max-width: 860px){
+      .hero .wrap{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">∞</div>
+      <span>Mi Sitio</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#acerca">Acerca</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="inicio" class="hero">
+    <div class="container wrap">
+      <div>
+        <h1>Un sitio web moderno, <span style="background:linear-gradient(135deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent">sin pagar un centavo</span>.</h1>
+        <p>Hosteado gratis con GitHub Pages, Cloudflare Pages o Netlify. Rápido, seguro y fácil de mantener.</p>
+        <div style="display:flex;gap:12px;margin-top:18px">
+          <a class="btn" href="#como">Cómo publicarlo gratis</a>
+          <a class="btn" href="#contacto" style="background:transparent;border:1px solid #334155;color:var(--txt)">Contáctame</a>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Ventajas</h2>
+        <div class="grid features">
+          <div class="card" style="padding:16px">
+            <strong>Gratis</strong>
+            <p class="muted">Usa subdominios como <span class="kbd">usuario.github.io</span>.</p>
+          </div>
+          <div class="card" style="padding:16px">
+            <strong>Rápido</strong>
+            <p class="muted">HTML/CSS/JS estáticos servidos por CDN.</p>
+          </div>
+          <div class="card" style="padding:16px">
+            <strong>Seguro</strong>
+            <p class="muted">HTTPS incluido, sin servidores que administrar.</p>
+          </div>
+          <div class="card" style="padding:16px">
+            <strong>Escalable</strong>
+            <p class="muted">Crece con páginas y secciones a tu ritmo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="servicios">
+    <div class="container">
+      <h2>Qué puedes poner aquí</h2>
+      <div class="grid features">
+        <div class="card"><strong>Portafolio</strong><p class="muted">Proyectos, fotos y enlaces.</p></div>
+        <div class="card"><strong>Negocio local</strong><p class="muted">Horario, dirección y menú.</p></div>
+        <div class="card"><strong>Blog sencillo</strong><p class="muted">Artículos en HTML/Markdown.</p></div>
+        <div class="card"><strong>Landing</strong><p class="muted">Promociona un producto o evento.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="acerca">
+    <div class="container">
+      <h2>Acerca</h2>
+      <p class="muted">Edita este texto para contar quién eres, qué haces y por qué la gente debería contactarte.</p>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="container">
+      <h2>Cómo publicarlo 100% gratis</h2>
+      <ol class="muted">
+        <li>Crea una cuenta en <strong>GitHub</strong>.</li>
+        <li>Haz un repositorio llamado <span class="kbd">tuusuario.github.io</span>.</li>
+        <li>Sube este archivo como <span class="kbd">index.html</span>.</li>
+        <li>Visita <span class="kbd">https://tuusuario.github.io</span> y listo ✨.</li>
+      </ol>
+      <p class="muted">Alternativas sin costo: <strong>Cloudflare Pages</strong>, <strong>Netlify</strong> o <strong>Vercel</strong> usando su plan gratuito y un subdominio.</p>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <h2>Contacto</h2>
+      <div class="card">
+        <p>¿Dudas o cotizaciones? Escríbeme:</p>
+        <p><a href="mailto:tuemail@ejemplo.com" class="btn">Enviar correo</a></p>
+        <p class="muted" style="margin-top:8px">También puedes reemplazar el botón por tus redes sociales.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Mi Sitio — Hecho con ♥ y HTML gratis.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
