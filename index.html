@@ -18,22 +18,36 @@
     }
 
     *{box-sizing:border-box}
-    html,body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: url("cancha-fondo.png") center/cover no-repeat;
-  opacity: 0.25; /* Ajusta entre 0.2 y 0.5 según qué tan visible la quieras */
-  filter: brightness(0.9);
-}
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      color: var(--txt);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+      background: none;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* 🏀 Fondo con overlay oscuro e imagen fija */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("cancha-fondo.png");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      opacity: 1;
+    }
 
     a{color:var(--orange);text-decoration:none}
     a:hover{text-decoration:underline}
-
-
-
-    
 
     .container{max-width:1100px;margin:0 auto;padding:24px}
     header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;position:sticky;top:0;background:rgba(24,34,53,.9);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.06);z-index:10}
@@ -131,7 +145,7 @@
     </div>
   </section>
 
-  <!-- 🗺️ Ubicación actualizada con mapa centrado en las coordenadas precisas -->
+  <!-- 🗺️ Ubicación con mapa centrado en las coordenadas -->
   <section id="ubicacion">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Ubicación</h2>
@@ -140,7 +154,6 @@
         <p><strong>Dirección:</strong> Calle 136 - 74-01, Bogotá</p>
         <p><a class="btn" href="https://maps.app.goo.gl/9K6avFsTPCPx8HVe6" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
 
-        <!-- Contenedor del mapa -->
         <div style="margin-top:16px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
           <iframe
             title="Mapa Red Hawks"
@@ -150,7 +163,7 @@
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=4.727768600153661,-74.07384762986823&z=18&output=embed">
+            src="https://www.google.com/maps?q=4.727796571334193,-74.0737870005324&z=18&output=embed">
           </iframe>
         </div>
       </div>
