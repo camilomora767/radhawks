@@ -11,18 +11,15 @@
        🎨 PALETA DE COLORES (variables reutilizables)
        ========================================================= */
     :root{
-      --bg:#42050F;                         /* fondo base rojizo (logo)   */
-      --surface:rgba(31,42,61,0.85);        /* tarjetas y bloques */
-      --txt:#f8fafc;                        /* texto principal    */
-      --muted:#cbd5e1;                      /* texto secundario   */
-      --red:#e11d48;                        /* rojo institucional */
-      --orange:#f97316;                     /* acento naranja     */
-      --ring:#ef4444;                       /* bordes rojos       */
+      --bg:#42050F;
+      --surface:rgba(31,42,61,0.85);
+      --txt:#f8fafc;
+      --muted:#cbd5e1;
+      --red:#e11d48;
+      --orange:#f97316;
+      --ring:#ef4444;
     }
 
-    /* =========================================================
-       🔠 TIPOGRAFÍA BASE
-       ========================================================= */
     *{box-sizing:border-box}
     html{ --base-font-size:20px; font-size:var(--base-font-size); }
     body{
@@ -31,7 +28,7 @@
     }
 
     /* =========================================================
-       🏀 FONDO GLOBAL: imagen de cancha + overlay oscuro
+       🏀 FONDO GLOBAL
        ========================================================= */
     body::before{
       content:""; position:fixed; inset:0; z-index:-1;
@@ -44,15 +41,9 @@
       background-attachment:fixed;
     }
 
-    /* =========================================================
-       🔗 ENLACES
-       ========================================================= */
     a{color:var(--orange); text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* =========================================================
-       📦 CONTENEDOR CENTRAL
-       ========================================================= */
     .container{max-width:1100px; margin:0 auto; padding:12px}
 
     /* =========================================================
@@ -68,15 +59,11 @@
     .brand img{width:60px; height:60px; object-fit:contain}
     .brand span{letter-spacing:.5px}
 
-    /* ===== Menú desktop (horizontal) ===== */
-    nav{position:relative}
-    nav ul{
-      display:flex; gap:18px; list-style:none; margin:0; padding:0;
-    }
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0;}
     nav a{font-weight:700; color:var(--txt)}
     nav a:hover{color:var(--orange)}
 
-    /* ===== Botón hamburguesa (se oculta en desktop) ===== */
+    /* Botón hamburguesa (móvil) */
     .menu-toggle{
       display:none; width:40px; height:40px; border-radius:10px;
       border:1px solid rgba(255,255,255,.12);
@@ -85,7 +72,6 @@
       transition:background .2s;
     }
     .menu-toggle:hover{background:rgba(31,42,61,.75)}
-    /* Icono (tres barras) */
     .menu-toggle .bar{
       position:relative; width:22px; height:2px; background:#fff; border-radius:2px;
       transition:transform .2s, background .2s;
@@ -97,8 +83,6 @@
     }
     .menu-toggle .bar::before{ top:-7px; }
     .menu-toggle .bar::after{ bottom:-7px; }
-
-    /* Estado abierto: animar a "X" */
     .menu-toggle.open .bar{ background:transparent; }
     .menu-toggle.open .bar::before{ top:0; transform:rotate(45deg); }
     .menu-toggle.open .bar::after{ bottom:0; transform:rotate(-45deg); }
@@ -109,22 +93,17 @@
     .hero{padding:80px 24px}
     .hero .wrap{display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center}
 
-    /* =========================================================
-      🃏 CARDS
-      ========================================================= */
-    .card{ background:var(--surface); border:1px solid rgba(255,255,255,.08);
-      border-radius:18px; padding:24px; }
+    .card{
+      background:var(--surface);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:24px;
+    }
 
-    /* =========================================================
-      📝 TITULARES Y PÁRRAFOS
-      ========================================================= */
     h1{font-size:clamp(28px,6vw,48px); line-height:1.1; margin:0 0 12px}
     h2{font-size:clamp(22px,4vw,32px); margin:0 0 12px}
     p{color:var(--muted); line-height:1.6}
 
-    /* =========================================================
-      🔘 BOTONES
-      ========================================================= */
     .btn{
       display:inline-block; padding:12px 18px; border-radius:12px;
       background:linear-gradient(135deg,var(--red),var(--orange));
@@ -133,93 +112,52 @@
     }
     .btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px -6px rgba(239,68,68,.35)}
 
-    /* =========================================================
-      ◻️ SECCIONES
-      ========================================================= */
     section{padding:28px 20px}
     .section-title{display:flex; align-items:center; gap:10px}
     .section-title .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--red),var(--orange))}
     section + section{margin-top:-20px}
 
-    /* =========================================================
-      🦶 FOOTER
-      ========================================================= */
     footer{padding:32px 24px; border-top:1px solid rgba(255,255,255,.06); color:var(--muted); text-align:center}
 
-    /* =========================================================
-      🏀 LISTAS CON BALÓN
-      ========================================================= */
     .list-ball{list-style:none; padding-left:0}
     .list-ball li{position:relative; padding-left:34px; margin:10px 0}
     .list-ball li::before{content:"🏀"; position:absolute; left:0; top:0}
 
     /* =========================================================
-      🟢 BOTÓN WHATSAPP
-      ========================================================= */
-    .card .actions{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:8px; justify-content:center}
-    .btn-wa{
-      display:inline-flex; align-items:center; gap:10px;
-      background:linear-gradient(135deg,#128C7E,#25D366);
-      color:#fff; font-weight:700; border:none; border-radius:12px;
-      padding:12px 20px; text-decoration:none;
-      box-shadow:0 6px 20px -8px rgba(18,140,126,.6);
-      transition:transform .1s ease, box-shadow .2s;
-    }
-    .btn-wa:hover{transform:translateY(-1px); box-shadow:0 8px 24px -6px rgba(18,140,126,.75)}
-    .wa-icon{width:22px; height:22px; filter:brightness(0) invert(1)}
-
-    /* =========================================================
-       📱 AJUSTES RESPONSIVE GLOBALES
+       🎒 REQUISITOS: texto + logo alineados
        ========================================================= */
-    /* Tipografía: escalado progresivo */
-    @media (max-width:1024px){ html{ --base-font-size:18px; } }
-    @media (max-width:768px){  html{ --base-font-size:17px; } }
-
-    /* Contenedor y secciones */
-    .container{padding-left:16px; padding-right:16px}
-    @media (max-width:768px){
-      section{padding:22px 16px}
-      section + section{margin-top:-10px}
+    .requirements-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
     }
-
-    /* Hero colapsa a una columna en pantallas medias */
-    .hero{padding:72px 24px}
-    @media (max-width:980px){
-      .hero{padding:48px 16px}
-      .hero .wrap{grid-template-columns:1fr; gap:16px}
+    .requirements-text{
+      flex:1;
+      min-width:260px;
+      line-height:1.75;
     }
-
-    /* Cards más ligeras en móvil */
-    @media (max-width:768px){
-      .card{padding:16px; border-radius:14px}
+    .requirements-text ol{ margin-top:12px; }
+    .note{
+      margin-top:14px;
+      color:#f9c74f;
+      font-weight:600;
     }
-
-    /* Botones: mejor clic en móvil */
-    @media (max-width:480px){
-      .btn, .btn-wa{width:100%; justify-content:center}
+    .requirements-logo{ flex-shrink:0; }
+    .requirements-logo img{
+      width:320px;
+      max-width:32vw;
+      height:auto;
+      display:block;
+      border-radius:50%;
+      transition:transform .25s ease;
     }
-
-    /* Mapa responsive (sin tocar HTML) */
-    #ubicacion iframe{height:360px}
-    @media (max-width:768px){ #ubicacion iframe{height:280px} }
-    @media (max-width:480px){ #ubicacion iframe{height:220px} }
-
-    /* Fondo: desactivar 'fixed' en móviles para evitar lag/salto */
-    @media (max-width:768px){
-      body::before{ background-attachment:scroll; background-position:center top; }
-    }
-
-    /* Anclas del menú: compensar la altura del header sticky */
-    :target::before{ content:""; display:block; height:70px; margin-top:-70px; }
-    @media (max-width:980px){
-      :target::before{ height:56px; margin-top:-56px; }
-    }
+    .requirements-logo img:hover{ transform:scale(1.04); }
 
     /* =========================================================
-       🍔 MENÚ HAMBURGUESA (móvil)
+       📱 RESPONSIVE + MENÚ HAMBURGUESA
        ========================================================= */
     @media (max-width:820px){
-      /* Mostrar botón hamburguesa y ocultar menú horizontal */
       .menu-toggle{display:flex;}
       nav ul{
         display:none; position:absolute; right:0; top:56px; z-index:25;
@@ -232,31 +170,25 @@
       }
       nav ul.show{display:flex;}
       nav a{padding:8px 6px; font-weight:700;}
-      /* Ajustes de header/brand */
       header{gap:10px; padding:10px 16px;}
       .brand img{width:48px; height:48px;}
+      .requirements-wrap{ flex-direction:column; align-items:flex-start; }
+      .requirements-logo img{ width:200px; max-width:60vw; margin-top:8px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- =========================================================
-       🧭 HEADER: Logo + navegación (hamburguesa en móvil)
-       ========================================================= -->
+  <!-- ===== Header con navegación (hamburguesa en móvil) ===== -->
   <header>
     <div class="brand">
       <img src="redhawks-logo-transparent-background.png" alt="Red Hawks Logo" />
       <span>Red Hawks</span>
     </div>
-
     <nav aria-label="Navegación principal">
-      <!-- Botón hamburguesa -->
       <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="menu">
         <span class="bar" aria-hidden="true"></span>
-        <span class="sr-only">Abrir menú</span>
       </button>
-
-      <!-- Menú -->
       <ul id="menu">
         <li><a href="#acerca">Acerca</a></li>
         <li><a href="#servicios">Servicios</a></li>
@@ -269,9 +201,7 @@
     </nav>
   </header>
 
-  <!-- =========================================================
-       🦅 HERO: Mensaje principal + CTA
-       ========================================================= -->
+  <!-- ===== Hero con CTA + horarios resumidos ===== -->
   <main class="hero">
     <div class="container wrap">
       <div>
@@ -281,17 +211,13 @@
             — Escuela de Baloncesto y Valores
           </span>
         </h1>
-        <p style="margin-bottom:8px">● Formamos niños y niñas entre <strong>9 y 15 años</strong> en fundamentos de baloncesto, trabajo en equipo y disciplina.</p>
-        <p style="margin:0">
-          <strong>● Aprovecha tu tiempo libre aprendiendo basketball.</strong><br>
-          Desarrolla todo tu potencial en esta maravillosa disciplina deportiva.
-        </p>
+        <p>● Formamos niños y niñas entre <strong>9 y 15 años</strong> en fundamentos de baloncesto, trabajo en equipo y disciplina.</p>
+        <p><strong>● Aprovecha tu tiempo libre aprendiendo basketball.</strong><br>Desarrolla todo tu potencial en esta maravillosa disciplina deportiva.</p>
         <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
           <a class="btn" href="#contacto">Inscríbete por WhatsApp</a>
         </div>
       </div>
 
-      <!-- Tarjeta de servicios resumidos -->
       <div class="card" id="servicios">
         <h2 class="section-title"><span class="dot"></span> Servicios / Horarios</h2>
         <ul class="list-ball">
@@ -299,84 +225,75 @@
           <li><strong>Grupo A:</strong> 8:30 – 10:00 a.m. — Niñas y niños de 9 a 11 años</li>
           <li><strong>Grupo B:</strong> 10:00 – 11:30 a.m. — Niñas y niños de 12 a 15 años</li>
         </ul>
-        <p class="muted" style="margin-top:8px">
-          Sesiones por niveles: fundamentos, coordinación, toma de decisiones y juego en equipo.
-        </p>
+        <p style="margin-top:8px">Sesiones por niveles: fundamentos, coordinación, toma de decisiones y juego en equipo.</p>
       </div>
     </div>
   </main>
 
-  <!-- =========================================================
-       🏀 ACERCA
-       ========================================================= -->
+  <!-- ===== Acerca ===== -->
   <section id="acerca">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Acerca de Red Hawks</h2>
       <p>Red Hawks es una escuela de baloncesto fundada en Bogotá por el coach <strong>Juan Carlos Mora</strong>, quien cuenta con más de veinte años de experiencia formando niños y jóvenes en el <strong>Colegio San Jorge de Inglaterra (Saint George’s School)</strong>.</p>
-      <p>La filosofía de entrenamiento del coach Mora está centrada en el crecimiento integral de sus jugadores, combinando la enseñanza técnica y cognoscitiva del juego con una formación en valores y principios morales. Su enfoque busca que cada alumno no solo mejore su desempeño deportivo, sino también su carácter, disciplina y trabajo en equipo: elementos esenciales para el éxito personal y deportivo.</p>
+      <p>La filosofía de entrenamiento del coach Mora está centrada en el crecimiento integral de sus jugadores, combinando la enseñanza técnica y cognoscitiva del juego con una formación en valores y principios morales.</p>
       <p>Ha sido varias veces campeón con sus equipos en todas las categorías de <strong>UNCOLI</strong> y <strong>ASOCOLDEP</strong>; además, cuenta con experiencia en campamentos internacionales de equipos NBA como <em>San Antonio Spurs</em> y <em>Dallas Mavericks</em>.</p>
     </div>
   </section>
 
-  <!-- =========================================================
-       💰 COSTO Y PAGOS
-       ========================================================= -->
+  <!-- ===== Costo y pagos ===== -->
   <section id="costo">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Costo y pagos</h2>
       <div class="card">
         <p style="font-size:28px;margin:0 0 8px"><strong>$30.000 COP</strong> por sesión</p>
-        <p style="margin:0 0 6px">Inscripción totalmente gratuita. La sesión incluye una evaluación inicial y seguimiento por niveles.</p>
-        <p style="margin:0"><strong>Métodos de pago:</strong> Daviplata y Nequi.</p>
+        <p>Inscripción totalmente gratuita. La sesión incluye una evaluación inicial y seguimiento por niveles.</p>
+        <p><strong>Métodos de pago:</strong> Daviplata y Nequi.</p>
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-       🧑‍🏫 PERSONAL
-       ========================================================= -->
+  <!-- ===== Personal ===== -->
   <section id="personal">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Personal a cargo de los entrenamientos</h2>
       <div class="card">
         <p>Los entrenamientos de Red Hawks están dirigidos por <strong>profesionales del deporte y la Educación Física</strong> con amplia experiencia en edades escolares, actividades recreativas, campamentos deportivos y deporte competitivo.</p>
-        <p>Todo el personal cuenta con <strong>certificación en primeros auxilios y RCP (nivel avanzado)</strong>, otorgada por <strong>Saint John’s Ambulance</strong>, garantizando un entorno seguro y profesional para los participantes.</p>
+        <p>Todo el personal cuenta con <strong>certificación en primeros auxilios y RCP (nivel avanzado)</strong>, otorgada por <strong>Saint John’s Ambulance</strong>.</p>
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-       🎒 REQUISITOS
-       ========================================================= -->
+  <!-- ===== Requisitos (con logo dentro de la tarjeta) ===== -->
   <section id="requisitos">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Elementos para cada sesión de entrenamiento</h2>
-      <div class="card">
-        <p>Los <strong>participantes de Red Hawks</strong> deben llevar a cada sesión:</p>
-        <ol style="margin-top:12px; line-height:1.8">
-          <li>Tennis de baloncesto.</li>
-          <li>Pantaloneta.</li>
-          <li>Dos camisetas: una blanca y una oscura.</li>
-          <li>Balón de baloncesto debidamente marcado.</li>
-          <li>Lazo para saltar.</li>
-          <li>Morral.</li>
-          <li>Chaqueta.</li>
-          <li>Sombrilla.</li>
-          <li>Hidratación (preferiblemente agua) y merienda.</li>
-          <li>Protector solar.</li>
-        </ol>
-        <p style="margin-top:14px; color:var(--muted)">⚠️ Recomendamos marcar todo con el nombre del participante.</p>
+      <div class="card requirements-wrap">
+        <!-- Texto a la izquierda -->
+        <div class="requirements-text">
+          <p>Los <strong>participantes de Red Hawks</strong> deben llevar a cada sesión:</p>
+          <ol>
+            <li>Tennis de baloncesto.</li>
+            <li>Pantaloneta.</li>
+            <li>Dos camisetas: una blanca y una oscura.</li>
+            <li>Balón de baloncesto debidamente marcado.</li>
+            <li>Lazo para saltar.</li>
+            <li>Morral.</li>
+            <li>Chaqueta.</li>
+            <li>Sombrilla.</li>
+            <li>Hidratación (preferiblemente agua) y merienda.</li>
+            <li>Protector solar.</li>
+          </ol>
+          <p class="note">⚠️ Recomendamos marcar todo con el nombre del participante.</p>
+        </div>
+        <!-- Logo a la derecha (dentro de la MISMA tarjeta) -->
+        <div class="requirements-logo">
+          <img src="https://camilomora767.github.io/radhawks/redhawks-logo.png" alt="Red Hawks Logo">
+        </div>
       </div>
     </div>
-        <div class="requirements-logo">
-      <img src="https://camilomora767.github.io/radhawks/redhawks-logo.png" alt="Red Hawks Logo">
-    </div>
-  </div>
   </section>
 
-  <!-- =========================================================
-       📍 UBICACIÓN
-       ========================================================= -->
+  <!-- ===== Ubicación ===== -->
   <section id="ubicacion">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Ubicación</h2>
@@ -386,12 +303,7 @@
         <p><a class="btn" href="https://maps.app.goo.gl/9K6avFsTPCPx8HVe6" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
         <div style="margin-top:16px; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.08)">
           <iframe
-            title="Mapa Red Hawks"
-            width="100%"
-            height="360"
-            style="border:0"
-            loading="lazy"
-            allowfullscreen
+            title="Mapa Red Hawks" width="100%" height="360" style="border:0" loading="lazy" allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps?q=4.727796571334193,-74.0737870005324&z=18&output=embed">
           </iframe>
@@ -400,9 +312,7 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       💬 CONTACTO
-       ========================================================= -->
+  <!-- ===== Contacto ===== -->
   <section id="contacto">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Contacto</h2>
@@ -422,19 +332,16 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       🦶 FOOTER
-       ========================================================= -->
+  <!-- ===== Footer ===== -->
   <footer>
     <div class="container">© <span id="year"></span> Red Hawks — Escuela de formación en baloncesto y valores.</div>
   </footer>
 
-  <!-- ===== Utilidades ===== -->
   <script>
     // Año automático en el footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ===== Menú hamburguesa =====
+    // Menú hamburguesa
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
 
@@ -451,7 +358,7 @@
       toggle.setAttribute('aria-expanded', String(isOpen));
     });
 
-    // Cerrar al hacer click en enlace
+    // Cerrar al hacer click en un enlace del menú
     menu.querySelectorAll('a').forEach(a=>{
       a.addEventListener('click', closeMenu);
     });
@@ -470,56 +377,3 @@
   </script>
 </body>
 </html>
-
-.requirements-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgba(20, 28, 44, 0.95);
-  border-radius: 16px;
-  padding: 2rem;
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  gap: 2rem;
-}
-
-.requirements-text {
-  flex: 1;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.requirements-logo {
-  flex-shrink: 0;
-}
-
-.requirements-logo img {
-  max-width: 300px;
-  height: auto;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.requirements-logo img:hover {
-  transform: scale(1.05);
-}
-
-.note {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: #f9c74f;
-}
-
-/* 📱 Versión móvil */
-@media (max-width: 768px) {
-  .requirements-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .requirements-logo img {
-    max-width: 200px;
-    margin-top: 1rem;
-  }
-}
-
