@@ -18,15 +18,20 @@
     }
 
     *{box-sizing:border-box}
-    html,body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: url("cancha-fondo.png") center/cover no-repeat;
-  opacity: 0.25; /* Ajusta entre 0.2 y 0.5 según qué tan visible la quieras */
-  filter: brightness(0.9);
+  html,body{
+  margin: 0;
+  padding: 0;
+  color: var(--txt);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+
+  /* 2 capas: 1) overlay oscuro, 2) imagen */
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("cancha-fondo.png");
+  background-position: center center, center center;
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed; /* efecto fijo para ambas capas */
 }
+
 
     a{color:var(--orange);text-decoration:none}
     a:hover{text-decoration:underline}
