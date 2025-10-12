@@ -18,17 +18,21 @@
     }
 
     *{box-sizing:border-box}
-    html,body{
-      margin:0;
-      padding:0;
-      color:var(--txt);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
-      background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-                 url("cancha-fondo.png") center/cover no-repeat fixed;
-      background-attachment: fixed;
-    }
+    html,body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(rgba(20,20,20,0.6), rgba(20,20,20,0.6)),
+              url("cancha-fondo.png") center/cover no-repeat;
+  background-attachment: fixed;
+  color: var(--txt);
+  font-family: system-ui, sans-serif;
+}
     a{color:var(--orange);text-decoration:none}
     a:hover{text-decoration:underline}
+
+
+
+    
 
     .container{max-width:1100px;margin:0 auto;padding:24px}
     header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;position:sticky;top:0;background:rgba(24,34,53,.9);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.06);z-index:10}
