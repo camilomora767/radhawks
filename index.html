@@ -25,9 +25,6 @@
       height: 100%;
       color: var(--txt);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-      background: none;
-      position: relative;
-      overflow-x: hidden;
     }
 
     /* 🏀 Fondo con overlay oscuro e imagen fija */
@@ -38,12 +35,11 @@
       z-index: -1;
       background-image:
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("cancha-fondo.png");
+        url("./cancha-fondo.png");
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
       background-attachment: fixed;
-      opacity: 1;
     }
 
     a{color:var(--orange);text-decoration:none}
@@ -116,7 +112,7 @@
           <a class="btn" href="#servicios" style="background:transparent;border:1px solid var(--ring);color:#fff">Ver horarios</a>
         </div>
       </div>
-      <div class="card">
+      <div class="card" id="servicios">
         <h2 class="section-title"><span class="dot"></span> Servicios</h2>
         <ul class="list-ball">
           <li><strong>Entrenamientos – Sábados</strong></li>
@@ -145,7 +141,6 @@
     </div>
   </section>
 
-  <!-- 🗺️ Ubicación con mapa centrado en las coordenadas -->
   <section id="ubicacion">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Ubicación</h2>
