@@ -314,7 +314,7 @@
       <h2 class="section-title"><span class="dot"></span> Acerca de Red Hawks</h2>
       <p>Red Hawks es una escuela de baloncesto fundada en Bogotá por el coach <strong>Juan Carlos Mora</strong>, quien cuenta con más de veinte años de experiencia formando niños y jóvenes en el <strong>Colegio San Jorge de Inglaterra (Saint George’s School)</strong>.</p>
       <p>La filosofía de entrenamiento del coach Mora está centrada en el crecimiento integral de sus jugadores, combinando la enseñanza técnica y cognoscitiva del juego con una formación en valores y principios morales. Su enfoque busca que cada alumno no solo mejore su desempeño deportivo, sino también su carácter, disciplina y trabajo en equipo: elementos esenciales para el éxito personal y deportivo.</p>
-      <p>Ha sido varias veces campeón con sus equipos en todas las categorías de <strong>UNCOLI</strong> y <strong>ASOCOLDEP</strong>; además, cuenta con experiencia en campamentos internacionales de equipos NBA como <em>San Antonio Spurs</em> y <em>Houston Rockets</em>.</p>
+      <p>Ha sido varias veces campeón con sus equipos en todas las categorías de <strong>UNCOLI</strong> y <strong>ASOCOLDEP</strong>; además, cuenta con experiencia en campamentos internacionales de equipos NBA como <em>San Antonio Spurs</em> y <em>Dallas Mavericks</em>.</p>
     </div>
   </section>
 
@@ -368,6 +368,10 @@
         <p style="margin-top:14px; color:var(--muted)">⚠️ Recomendamos marcar todo con el nombre del participante.</p>
       </div>
     </div>
+        <div class="requirements-logo">
+      <img src="https://camilomora767.github.io/radhawks/redhawks-logo.png" alt="Red Hawks Logo">
+    </div>
+  </div>
   </section>
 
   <!-- =========================================================
@@ -466,3 +470,56 @@
   </script>
 </body>
 </html>
+
+.requirements-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(20, 28, 44, 0.95);
+  border-radius: 16px;
+  padding: 2rem;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  gap: 2rem;
+}
+
+.requirements-text {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.requirements-logo {
+  flex-shrink: 0;
+}
+
+.requirements-logo img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.requirements-logo img:hover {
+  transform: scale(1.05);
+}
+
+.note {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #f9c74f;
+}
+
+/* 📱 Versión móvil */
+@media (max-width: 768px) {
+  .requirements-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .requirements-logo img {
+    max-width: 200px;
+    margin-top: 1rem;
+  }
+}
+
