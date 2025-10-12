@@ -6,26 +6,44 @@
   <title>Red Hawks Basketball Club</title>
   <meta name="description" content="Escuela de formación en baloncesto y valores – Red Hawks Bogotá" />
   <style>
-    /* Paleta basada en el logo Red Hawks */
+    /* Paleta basada en el logo Red Hawks (ahora con fondo más claro) */
     :root{
-      --bg:#0b0f19;          /* fondo casi negro */
-      --surface:#121826;     /* cartas/barras */
+      --bg:#182235;          /* más claro que antes */
+      --surface:#1f2a3d;     /* cartas/barras */
       --txt:#f8fafc;         /* texto principal */
-      --muted:#94a3b8;       /* texto secundario */
+      --muted:#cbd5e1;       /* texto secundario un poco más claro */
       --red:#e11d48;         /* rojo halcón */
-      --red-dark:#7f1d1d;    /* rojo oscuro */
       --orange:#f97316;      /* naranja balón */
-      --accent:#e11d48;      /* color de acento por defecto */
-      --ring:#ef4444;        /* para detalles/hover */
+      --ring:#ef4444;        /* detalles */
+      --line: rgba(249,115,22,.25); /* líneas de cancha (naranja suave) */
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
     a{color:var(--orange);text-decoration:none}
     a:hover{text-decoration:underline}
+
+    /* Fondo con líneas de cancha de baloncesto usando SVG embebido */
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-1; opacity:.4;
+      background:
+        url("data:image/svg+xml;utf8,\
+        <svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'>\
+          <rect x='50' y='50' width='1500' height='800' fill='none' stroke='rgba(249,115,22,0.18)' stroke-width='6' rx='30'/>\
+          <line x1='800' y1='50' x2='800' y2='850' stroke='rgba(249,115,22,0.18)' stroke-width='6'/>\
+          <circle cx='800' cy='450' r='90' fill='none' stroke='rgba(249,115,22,0.18)' stroke-width='6'/>\
+          <rect x='50' y='275' width='190' height='350' fill='none' stroke='rgba(249,115,22,0.18)' stroke-width='6'/>\
+          <rect x='1360' y='275' width='190' height='350' fill='none' stroke='rgba(249,115,22,0.18)' stroke-width='6'/>\
+          <circle cx='240' cy='450' r='60' fill='none' stroke='rgba(249,115,22,0.18)' stroke-width='6'/>\
+          <circle cx='1360' cy='450' r='60' fill='none' stroke='rgba(249,115,22,0.18)' stroke-width='6'/>\
+        </svg>") center/cover no-repeat;
+      filter: blur(0.5px);
+    }
+
     .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;position:sticky;top:0;background:linear-gradient(180deg, rgba(11,15,25,.95), rgba(11,15,25,.6));backdrop-filter:blur(6px);border-bottom:1px solid #1f2937;z-index:10}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;position:sticky;top:0;background:linear-gradient(180deg, rgba(24,34,53,.92), rgba(24,34,53,.6));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.06);z-index:10}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800}
-    .brand img{width:40px;height:40px;object-fit:contain}
+    .brand img{width:44px;height:44px;object-fit:contain}
     .brand span{letter-spacing:.5px}
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
     nav a{font-weight:700;color:var(--txt)}
@@ -33,7 +51,7 @@
 
     .hero{padding:80px 24px}
     .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
-    .card{background:var(--surface);border:1px solid #1f2937;border-radius:18px;padding:24px}
+    .card{background:var(--surface);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:24px}
     h1{font-size:clamp(28px,6vw,48px);line-height:1.1;margin:0 0 12px}
     h2{font-size:clamp(22px,4vw,32px);margin:0 0 12px}
     p{color:var(--muted);line-height:1.6}
@@ -41,32 +59,32 @@
     .btn{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--orange));color:white;font-weight:900;border:none;box-shadow:0 0 0 0 rgba(239,68,68,0);transition:transform .08s ease, box-shadow .2s}
     .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px -6px rgba(239,68,68,.35)}
 
-    .tag{display:inline-block;border:1px solid #ef4444;border-radius:999px;padding:4px 10px;font-size:12px;color:#fecaca;background:rgba(127,29,29,.15)}
-
     .grid{display:grid;gap:18px}
-    .features{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 
     section{padding:48px 24px}
     .section-title{display:flex;align-items:center;gap:10px}
     .section-title .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--orange))}
 
-    footer{padding:32px 24px;border-top:1px solid #1f2937;color:var(--muted)}
+    footer{padding:32px 24px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted)}
+
+    /* Lista de servicios con balones como bullets */
+    .list-ball{list-style:none;padding-left:0}
+    .list-ball li{position:relative;padding-left:34px;margin:10px 0}
+    .list-ball li::before{content:"🏀";position:absolute;left:0;top:0}
 
     /* responsive */
     @media (max-width: 860px){
       .hero .wrap{grid-template-columns:1fr}
-      .brand img{width:32px;height:32px}
+      .brand img{width:36px;height:36px}
     }
   </style>
 </head>
 <body>
   <header>
     <div class="brand">
-      <!-- Sube tu imagen a la raíz del repo como redhawks-logo.png -->
       <img src="redhawks-logo.png" alt="Red Hawks Logo" />
       <span>Red Hawks</span>
     </div>
-    <!-- Navegación por anclas en una sola página -->
     <nav>
       <ul>
         <li><a href="#acerca">Acerca</a></li>
@@ -80,25 +98,25 @@
   <main class="hero">
     <div class="container wrap">
       <div>
-        <span class="tag">Escuela de formación en baloncesto y valores</span>
         <h1>
           Red Hawks Bogotá
-          <span style="background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent">– pasión y disciplina</span>
+          <span style="background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent">— escuela de baloncesto y valores</span>
         </h1>
-        <p>Formamos niños y niñas entre 9 y 14 años en fundamentos de baloncesto, trabajo en equipo y valores. Entrena con nosotros y eleva tu juego.</p>
+        <p>Formamos niños y niñas entre 9 y 14 años en fundamentos de baloncesto, trabajo en equipo y disciplina. ¡Entrena con nosotros y eleva tu juego!</p>
         <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
-          <a class="btn" href="#contacto">Inscripciones por WhatsApp</a>
-          <a class="btn" href="#servicios" style="background:transparent;border:1px solid var(--ring);color:#fecaca">Horarios</a>
+          <a class="btn" href="#contacto">Inscríbete por WhatsApp</a>
+          <a class="btn" href="#servicios" style="background:transparent;border:1px solid var(--ring);color:#fff">Ver horarios</a>
         </div>
       </div>
+      <!-- TARJETA DERECHA: ahora muestra SERVICIOS con estilo de baloncesto -->
       <div class="card">
-        <h2 class="section-title"><span class="dot"></span> Colores institucionales</h2>
-        <p class="muted">Esta web usa la paleta del logo: <strong>Rojo</strong> (#e11d48), <strong>Naranja</strong> (#f97316), negro/gris oscuro y blanco.</p>
-        <div class="grid features">
-          <div class="card" style="padding:16px"><strong>Identidad</strong><p class="muted">Rojo del halcón como color principal.</p></div>
-          <div class="card" style="padding:16px"><strong>Energía</strong><p class="muted">Naranja del balón para llamadas a la acción.</p></div>
-          <div class="card" style="padding:16px"><strong>Contraste</strong><p class="muted">Fondos oscuros y texto claro para legibilidad.</p></div>
-        </div>
+        <h2 class="section-title"><span class="dot"></span> Servicios</h2>
+        <ul class="list-ball">
+          <li><strong>Entrenamientos – Sábados</strong></li>
+          <li>9:00–10:30 am — <strong>Categoría Infantil</strong></li>
+          <li>11:00–12:30 pm — <strong>Categoría Juvenil</strong></li>
+        </ul>
+        <p class="muted" style="margin-top:8px">Sesiones por niveles: fundamentos, coordinación, toma de decisiones y juego en equipo.</p>
       </div>
     </div>
   </main>
@@ -114,12 +132,11 @@
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Servicios</h2>
       <div class="card">
-        <p><strong>Entrenamientos – Sábados</strong></p>
-        <ul>
-          <li>9:00–10:30 am – <strong>Categoría Infantil</strong></li>
-          <li>11:00–12:30 pm – <strong>Categoría Juvenil</strong></li>
+        <ul class="list-ball">
+          <li><strong>Entrenamientos – Sábados</strong></li>
+          <li>9:00–10:30 am — <strong>Categoría Infantil</strong></li>
+          <li>11:00–12:30 pm — <strong>Categoría Juvenil</strong></li>
         </ul>
-        <p class="muted" style="margin-top:8px">Sesiones enfocadas en fundamentos, coordinación, toma de decisiones y trabajo en equipo.</p>
       </div>
     </div>
   </section>
@@ -140,7 +157,7 @@
       <div class="card">
         <p>¿Listo para unirte a Red Hawks?</p>
         <p><a class="btn" href="https://wa.me/573002102230" target="_blank" rel="noopener">WhatsApp: +57 300 2102230</a></p>
-        <p class="muted">Escríbenos por WhatsApp para resolver dudas y agendar tu primera sesión.</p>
+        <p class="muted">Escríbenos para resolver dudas y agendar tu primera sesión.</p>
       </div>
     </div>
   </section>
