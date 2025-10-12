@@ -7,19 +7,17 @@
   <meta name="description" content="Escuela de formación en baloncesto y valores – Red Hawks Bogotá" />
 
   <style>
-    /* 🎨 PALETA DE COLORES DEL SITIO
-       Se definen variables reutilizables para mantener coherencia visual */
+    /* 🎨 PALETA DE COLORES */
     :root{
-      --bg:#42050F; /* color base del fondo (rojo oscuro) */
-      --surface:rgba(31,42,61,0.85); /* color semitransparente de tarjetas */
-      --txt:#f8fafc; /* color de texto principal */
-      --muted:#cbd5e1; /* texto secundario */
-      --red:#e11d48; /* rojo corporativo */
-      --orange:#f97316; /* naranja de acento */
-      --ring:#ef4444; /* rojo para bordes y resaltados */
+      --bg:#42050F;
+      --surface:rgba(31,42,61,0.85);
+      --txt:#f8fafc;
+      --muted:#cbd5e1;
+      --red:#e11d48;
+      --orange:#f97316;
+      --ring:#ef4444;
     }
 
-    /* 🧱 RESETEO BÁSICO Y CONFIGURACIÓN DE FUENTES */
     *{box-sizing:border-box}
 
     html, body {
@@ -30,54 +28,46 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
     }
 
-    /* 🏀 FONDO FIJO CON LA IMAGEN DE LA CANCHA Y UN OVERLAY OSCURO */
+    /* 🏀 Fondo con overlay e imagen fija */
     body::before {
       content: "";
       position: fixed;
-      inset: 0; /* cubre toda la pantalla */
-      z-index: -1; /* se coloca detrás del contenido */
+      inset: 0;
+      z-index: -1;
       background-image:
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), /* capa oscura encima */
-        url("./cancha-fondo.png"); /* imagen del fondo */
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("./cancha-fondo.png");
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-attachment: fixed; /* efecto de fondo fijo al hacer scroll */
+      background-attachment: fixed;
     }
 
-    /* 🎯 ENLACES */
     a{color:var(--orange);text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* 📦 CONTENEDOR CENTRALIZADO */
     .container{max-width:1100px;margin:0 auto;padding:12px}
 
-    /* 🧭 BARRA DE NAVEGACIÓN FIJA SUPERIOR */
     header{
       display:flex;align-items:center;justify-content:space-between;gap:6px;
       padding:7px 24px;
       position:sticky;top:0;
-      background:rgba(24,34,53,.9); /* fondo oscuro translúcido */
-      backdrop-filter:blur(6px); /* efecto de desenfoque */
+      background:rgba(24,34,53,.9);
+      backdrop-filter:blur(6px);
       border-bottom:1px solid rgba(255,255,255,.06);
       z-index:10;
     }
-
-    /* 🔥 LOGO Y NOMBRE DE LA MARCA EN EL HEADER */
     .brand{display:flex;align-items:center;gap:12px;font-weight:800}
     .brand img{width:60px;height:60px;object-fit:contain}
     .brand span{letter-spacing:.5px}
 
-    /* 🔗 LINKS DE NAVEGACIÓN */
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
     nav a{font-weight:700;color:var(--txt)}
     nav a:hover{color:var(--orange)}
 
-    /* 🎯 SECCIÓN PRINCIPAL (HERO) */
     .hero{padding:80px 24px}
     .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
 
-    /* 🃏 TARJETAS DE CONTENIDO */
     .card{
       background:var(--surface);
       border:1px solid rgba(255,255,255,.08);
@@ -85,12 +75,10 @@
       padding:24px;
     }
 
-    /* 📝 TITULOS Y PÁRRAFOS */
     h1{font-size:clamp(28px,6vw,48px);line-height:1.1;margin:0 0 12px}
     h2{font-size:clamp(22px,4vw,32px);margin:0 0 12px}
     p{color:var(--muted);line-height:1.6}
 
-    /* 🔘 BOTONES PRINCIPALES */
     .btn{
       display:inline-block;
       padding:12px 18px;
@@ -99,38 +87,32 @@
       color:white;font-weight:900;border:none;
       transition:transform .08s ease, box-shadow .2s;
     }
-    .btn:hover{
-      transform:translateY(-1px);
-      box-shadow:0 8px 24px -6px rgba(239,68,68,.35);
-    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px -6px rgba(239,68,68,.35)}
 
-    /* 🎛️ CONFIGURACIÓN DE SECCIONES GENERALES */
     section{padding:28px 20px}
     .section-title{display:flex;align-items:center;gap:10px}
-    .section-title .dot{
-      width:10px;height:10px;border-radius:50%;
-      background:linear-gradient(135deg,var(--red),var(--orange))
-    }
+    .section-title .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--orange))}
+    section + section { margin-top: -20px; }
 
-    /* 🔽 REDUCE ESPACIADO ENTRE SECCIONES */
-    section + section {
-      margin-top: -20px;
-    }
+    footer{padding:32px 24px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted);text-align:center}
 
-    /* ⚽ PIE DE PÁGINA */
-    footer{
-      padding:32px 24px;
-      border-top:1px solid rgba(255,255,255,.06);
-      color:var(--muted);
-      text-align:center;
-    }
-
-    /* 🏀 LISTA PERSONALIZADA CON ICONO DE BALÓN */
     .list-ball{list-style:none;padding-left:0}
     .list-ball li{position:relative;padding-left:34px;margin:10px 0}
     .list-ball li::before{content:"🏀";position:absolute;left:0;top:0}
 
-    /* 📱 VERSIÓN RESPONSIVA PARA CELULARES */
+    /* Botón WhatsApp */
+    .card .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px;justify-content:center}
+    .btn-wa{
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(135deg,#128C7E,#25D366);
+      color:#fff;font-weight:700;border:none;border-radius:12px;
+      padding:12px 20px;text-decoration:none;
+      box-shadow:0 6px 20px -8px rgba(18,140,126,.6);
+      transition:transform .1s ease, box-shadow .2s;
+    }
+    .btn-wa:hover{transform:translateY(-1px);box-shadow:0 8px 24px -6px rgba(18,140,126,.75)}
+    .wa-icon{width:22px;height:22px;filter:brightness(0) invert(1)}
+
     @media (max-width: 860px){
       .hero .wrap{grid-template-columns:1fr}
       .brand img{width:36px;height:36px}
@@ -139,7 +121,7 @@
 </head>
 
 <body>
-  <!-- 🧭 ENCABEZADO CON LOGO Y MENÚ -->
+  <!-- Header -->
   <header>
     <div class="brand">
       <img src="redhawks-logo.png" alt="Red Hawks Logo" />
@@ -156,10 +138,9 @@
     </nav>
   </header>
 
-  <!-- 🏀 SECCIÓN HERO: Presentación principal -->
+  <!-- Hero -->
   <main class="hero">
     <div class="container wrap">
-      <!-- Texto principal del hero -->
       <div>
         <h1>
           Red Hawks Bogotá
@@ -167,21 +148,23 @@
             — escuela de baloncesto y valores
           </span>
         </h1>
-        <p>Formamos niños y niñas entre 9 y 15 años en fundamentos de baloncesto, trabajo en equipo y disciplina. ¡Entrena con nosotros y eleva tu juego!</p>
-
-        <!-- Botones de acción -->
+        <p style="margin-bottom:8px">Formamos niños y niñas entre <strong>9 y 15 años</strong> en fundamentos de baloncesto, trabajo en equipo y disciplina.</p>
+        <p style="margin:0">
+          <strong>Aprovecha tu tiempo libre aprendiendo basketball.</strong><br/>
+          Desarrolla todo tu potencial en esta maravillosa disciplina deportiva.
+        </p>
         <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
           <a class="btn" href="#contacto">Inscríbete por WhatsApp</a>
         </div>
       </div>
 
-      <!-- Tarjeta con información de servicios -->
+      <!-- Servicios resumen -->
       <div class="card" id="servicios">
-        <h2 class="section-title"><span class="dot"></span> Servicios</h2>
+        <h2 class="section-title"><span class="dot"></span> Servicios / Horarios</h2>
         <ul class="list-ball">
-          <li><strong>Entrenamientos – Sábados</strong></li>
-          <li>9:00–10:30 am — <strong>Categoría Infantil</strong></li>
-          <li>11:00–12:30 pm — <strong>Categoría Juvenil</strong></li>
+          <li><strong>Días de entrenamiento:</strong> Sábados en la mañana</li>
+          <li><strong>Grupo A:</strong> 8:30 – 10:00 a.m. — Niñas y niños de 9 a 11 años</li>
+          <li><strong>Grupo B:</strong> 10:00 – 11:30 a.m. — Niñas y niños de 12 a 15 años</li>
         </ul>
         <p class="muted" style="margin-top:8px">
           Sesiones por niveles: fundamentos, coordinación, toma de decisiones y juego en equipo.
@@ -190,52 +173,53 @@
     </div>
   </main>
 
-  <!-- 🏅 SECCIÓN: ACERCA DE RED HAWKS -->
+  <!-- Acerca -->
   <section id="acerca">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Acerca de Red Hawks</h2>
-<p>
-  Red Hawks es una escuela de baloncesto fundada en Bogotá por el coach <strong>Juan Carlos Mora</strong>, 
-  quien cuenta con más de veinte años de experiencia formando niños y jóvenes en el 
-  <strong>Colegio San Jorge de Inglaterra (Saint George’s School)</strong>. 
-</p>
-      
-<p>
-  La filosofía de entrenamiento del coach Mora está centrada en el crecimiento integral de sus jugadores, 
-  combinando la enseñanza técnica y cognoscitiva del juego con una formación en valores y principios morales. 
-  Su enfoque busca que cada alumno no solo mejore su desempeño deportivo, sino también su carácter, disciplina y trabajo en equipo — 
-  elementos esenciales para el éxito personal y deportivo.
-</p>
-<p>
-  El coach Mora se destaca por haber logrado sinnúmero de campeonatos con sus equipos en todas las categorías de <strong>UNCOLI</strong> y <strong>ASOCOLDEP</strong>, 
-  consolidando una trayectoria reconocida en el desarrollo del talento deportivo juvenil. Además cuenta con experiencia en la participación en campamentos internacionales de equipos de la NBA, tales como San Antonio Spurs y Houston Rockets.
-</p>
 
+      <p>
+        Red Hawks es una escuela de baloncesto fundada en Bogotá por el coach <strong>Juan Carlos Mora</strong>,
+        quien cuenta con más de veinte años de experiencia formando niños y jóvenes en el
+        <strong>Colegio San Jorge de Inglaterra (Saint George’s School)</strong>.
+      </p>
 
+      <p>
+        La filosofía de entrenamiento del coach Mora está centrada en el crecimiento integral de sus jugadores,
+        combinando la enseñanza técnica y cognoscitiva del juego con una formación en valores y principios morales.
+        Su enfoque busca que cada alumno no solo mejore su desempeño deportivo, sino también su carácter, disciplina y trabajo en equipo:
+        elementos esenciales para el éxito personal y deportivo.
+      </p>
+
+      <p>
+        Ha sido varias veces campeón con sus equipos en todas las categorías de <strong>UNCOLI</strong> y <strong>ASOCOLDEP</strong>, consolidando una
+        trayectoria reconocida en el desarrollo del talento deportivo juvenil. Además, cuenta con experiencia en campamentos internacionales de equipos NBA como
+        <em>San Antonio Spurs</em> y <em>Houston Rockets</em>.
+      </p>
     </div>
   </section>
 
-  <!-- 💰 SECCIÓN: COSTO DE ENTRENAMIENTOS -->
+  <!-- Costo -->
   <section id="costo">
     <div class="container">
-      <h2 class="section-title"><span class="dot"></span> Costo</h2>
+      <h2 class="section-title"><span class="dot"></span> Costo y pagos</h2>
       <div class="card">
         <p style="font-size:28px;margin:0 0 8px"><strong>$30.000 COP</strong> por sesión</p>
-        <p>Incluye evaluación inicial y seguimiento por niveles.</p>
+        <p style="margin:0 0 6px">Incluye evaluación inicial y seguimiento por niveles.</p>
+        <p style="margin:0"><strong>Métodos de pago:</strong> Daviplata y Nequi.</p>
       </div>
     </div>
   </section>
 
-  <!-- 📍 SECCIÓN: UBICACIÓN CON MAPA EMBEBIDO -->
+  <!-- Ubicación -->
   <section id="ubicacion">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Ubicación</h2>
       <div class="card">
-        <p><strong>Lugar:</strong> Cancha de Gratamira</p>
+        <p><strong>Lugar:</strong> Agrupación <strong>Gratamira UIC</strong></p>
         <p><strong>Dirección:</strong> Calle 136 - 74-01, Bogotá</p>
         <p><a class="btn" href="https://maps.app.goo.gl/9K6avFsTPCPx8HVe6" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
 
-        <!-- Mapa centrado en las coordenadas exactas -->
         <div style="margin-top:16px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
           <iframe
             title="Mapa Red Hawks"
@@ -252,82 +236,37 @@
     </div>
   </section>
 
-<!-- 📱 SECCIÓN: CONTACTO -->
-<section id="contacto">
-  <div class="container">
-    <h2 class="section-title"><span class="dot"></span> Contacto</h2>
-
-    <div class="card">
-      <p>¿Listo para unirte a Red Hawks?</p>
-
-      <div class="actions">
-        <!-- Botón de WhatsApp con ícono externo -->
-        <a
-          class="btn btn-wa"
-          aria-label="Escríbenos por WhatsApp"
-          href="https://api.whatsapp.com/send?phone=573002102230&text=Hola%2C%20quiero%20saber%20m%C3%A1s%20acerca%20de%20Red%20Hawks"
-          target="_blank" rel="noopener"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WhatsApp"
-            class="wa-icon"
-          />
-          Escríbenos por WhatsApp
-        </a>
+  <!-- Contacto -->
+  <section id="contacto">
+    <div class="container">
+      <h2 class="section-title"><span class="dot"></span> Contacto</h2>
+      <div class="card">
+        <p>¿Listo para unirte a Red Hawks? <strong>¡Cupos limitados!</strong></p>
+        <div class="actions">
+          <a
+            class="btn-wa"
+            aria-label="Escríbenos por WhatsApp"
+            href="https://api.whatsapp.com/send?phone=573002102230&text=Hola%2C%20quiero%20saber%20m%C3%A1s%20acerca%20de%20Red%20Hawks"
+            target="_blank" rel="noopener"
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+              alt="WhatsApp"
+              class="wa-icon"
+            />
+            Escríbenos por WhatsApp
+          </a>
+          <!-- Si quieres un botón de correo, descomenta: -->
+          <!-- <a class="btn" href="mailto:redhawksclub@example.com">Enviar correo</a> -->
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<style>
-/* Contenedor de acciones dentro de la tarjeta de contacto */
-.card .actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 8px;
-  justify-content: center;
-}
-
-/* Botón WhatsApp */
-.btn-wa {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #128C7E, #25D366);
-  color: #fff;
-  font-weight: 700;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 20px;
-  text-decoration: none;
-  box-shadow: 0 6px 20px -8px rgba(18, 140, 126, 0.6);
-  transition: transform 0.1s ease, box-shadow 0.2s;
-}
-
-.btn-wa:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px -6px rgba(18, 140, 126, 0.75);
-}
-
-/* Ícono de WhatsApp */
-.wa-icon {
-  width: 22px;
-  height: 22px;
-  filter: brightness(0) invert(1);
-}
-</style>
-
-
-
-  <!-- ⚽ PIE DE PÁGINA CON AÑO AUTOMÁTICO -->
   <footer>
     <div class="container">© <span id="year"></span> Red Hawks — Escuela de formación en baloncesto y valores.</div>
   </footer>
 
-  <!-- 📅 SCRIPT: Inserta el año actual automáticamente -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
