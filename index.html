@@ -3,148 +3,150 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mi sitio 100% gratis</title>
-  <meta name="description" content="Sitio estático sencillo, rápido y sin costo" />
+  <title>Red Hawks Basketball Club</title>
+  <meta name="description" content="Escuela de formación en baloncesto y valores – Red Hawks Bogotá" />
   <style>
+    /* Paleta basada en el logo Red Hawks */
     :root{
-      --bg: #0f172a; /* slate-900 */
-      --card:#111827; /* gray-900 */
-      --txt:#e5e7eb; /* gray-200 */
-      --muted:#94a3b8; /* slate-400 */
-      --brand:#22d3ee; /* cyan-400 */
-      --accent:#a78bfa; /* violet-400 */
+      --bg:#0b0f19;          /* fondo casi negro */
+      --surface:#121826;     /* cartas/barras */
+      --txt:#f8fafc;         /* texto principal */
+      --muted:#94a3b8;       /* texto secundario */
+      --red:#e11d48;         /* rojo halcón */
+      --red-dark:#7f1d1d;    /* rojo oscuro */
+      --orange:#f97316;      /* naranja balón */
+      --accent:#e11d48;      /* color de acento por defecto */
+      --ring:#ef4444;        /* para detalles/hover */
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
-    a{color:var(--brand);text-decoration:none}
+    a{color:var(--orange);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 24px;position:sticky;top:0;background:linear-gradient(180deg, rgba(15,23,42,.95), rgba(15,23,42,.6));backdrop-filter:blur(6px);border-bottom:1px solid #1f2937}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-    .brand .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#0b1020;font-weight:900}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;position:sticky;top:0;background:linear-gradient(180deg, rgba(11,15,25,.95), rgba(11,15,25,.6));backdrop-filter:blur(6px);border-bottom:1px solid #1f2937;z-index:10}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand img{width:40px;height:40px;object-fit:contain}
+    .brand span{letter-spacing:.5px}
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-    nav a{font-weight:600;color:var(--txt)}
-    nav a:hover{color:var(--brand)}
+    nav a{font-weight:700;color:var(--txt)}
+    nav a:hover{color:var(--orange)}
 
     .hero{padding:80px 24px}
     .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
-    .card{background:var(--card);border:1px solid #1f2937;border-radius:18px;padding:24px}
+    .card{background:var(--surface);border:1px solid #1f2937;border-radius:18px;padding:24px}
     h1{font-size:clamp(28px,6vw,48px);line-height:1.1;margin:0 0 12px}
+    h2{font-size:clamp(22px,4vw,32px);margin:0 0 12px}
     p{color:var(--muted);line-height:1.6}
-    .btn{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#0b1020;font-weight:800;border:none}
-    .btn:hover{filter:brightness(1.05)}
+
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--orange));color:white;font-weight:900;border:none;box-shadow:0 0 0 0 rgba(239,68,68,0);transition:transform .08s ease, box-shadow .2s}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px -6px rgba(239,68,68,.35)}
+
+    .tag{display:inline-block;border:1px solid #ef4444;border-radius:999px;padding:4px 10px;font-size:12px;color:#fecaca;background:rgba(127,29,29,.15)}
+
     .grid{display:grid;gap:18px}
     .features{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 
     section{padding:48px 24px}
-    h2{font-size:clamp(22px,4vw,32px);margin:0 0 12px}
-    .muted{color:var(--muted)}
-
-    .kbd{border:1px solid #334155;border-radius:8px;padding:2px 6px;background:#0b1020;color:var(--txt);font-weight:700}
+    .section-title{display:flex;align-items:center;gap:10px}
+    .section-title .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--orange))}
 
     footer{padding:32px 24px;border-top:1px solid #1f2937;color:var(--muted)}
 
-    /* responsive tweaks */
+    /* responsive */
     @media (max-width: 860px){
       .hero .wrap{grid-template-columns:1fr}
+      .brand img{width:32px;height:32px}
     }
   </style>
 </head>
 <body>
   <header>
     <div class="brand">
-      <div class="logo">∞</div>
-      <span>Mi Sitio</span>
+      <!-- Sube tu imagen a la raíz del repo como redhawks-logo.png -->
+      <img src="redhawks-logo.png" alt="Red Hawks Logo" />
+      <span>Red Hawks</span>
     </div>
+    <!-- Navegación por anclas en una sola página -->
     <nav>
       <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
         <li><a href="#acerca">Acerca</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#costo">Costo</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
-  <main id="inicio" class="hero">
+  <main class="hero">
     <div class="container wrap">
       <div>
-        <h1>Un sitio web moderno, <span style="background:linear-gradient(135deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent">sin pagar un centavo</span>.</h1>
-        <p>Hosteado gratis con GitHub Pages, Cloudflare Pages o Netlify. Rápido, seguro y fácil de mantener.</p>
-        <div style="display:flex;gap:12px;margin-top:18px">
-          <a class="btn" href="#como">Cómo publicarlo gratis</a>
-          <a class="btn" href="#contacto" style="background:transparent;border:1px solid #334155;color:var(--txt)">Contáctame</a>
+        <span class="tag">Escuela de formación en baloncesto y valores</span>
+        <h1>
+          Red Hawks Bogotá
+          <span style="background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent">– pasión y disciplina</span>
+        </h1>
+        <p>Formamos niños y niñas entre 9 y 14 años en fundamentos de baloncesto, trabajo en equipo y valores. Entrena con nosotros y eleva tu juego.</p>
+        <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
+          <a class="btn" href="#contacto">Inscripciones por WhatsApp</a>
+          <a class="btn" href="#servicios" style="background:transparent;border:1px solid var(--ring);color:#fecaca">Horarios</a>
         </div>
       </div>
       <div class="card">
-        <h2>Ventajas</h2>
+        <h2 class="section-title"><span class="dot"></span> Colores institucionales</h2>
+        <p class="muted">Esta web usa la paleta del logo: <strong>Rojo</strong> (#e11d48), <strong>Naranja</strong> (#f97316), negro/gris oscuro y blanco.</p>
         <div class="grid features">
-          <div class="card" style="padding:16px">
-            <strong>Gratis</strong>
-            <p class="muted">Usa subdominios como <span class="kbd">usuario.github.io</span>.</p>
-          </div>
-          <div class="card" style="padding:16px">
-            <strong>Rápido</strong>
-            <p class="muted">HTML/CSS/JS estáticos servidos por CDN.</p>
-          </div>
-          <div class="card" style="padding:16px">
-            <strong>Seguro</strong>
-            <p class="muted">HTTPS incluido, sin servidores que administrar.</p>
-          </div>
-          <div class="card" style="padding:16px">
-            <strong>Escalable</strong>
-            <p class="muted">Crece con páginas y secciones a tu ritmo.</p>
-          </div>
+          <div class="card" style="padding:16px"><strong>Identidad</strong><p class="muted">Rojo del halcón como color principal.</p></div>
+          <div class="card" style="padding:16px"><strong>Energía</strong><p class="muted">Naranja del balón para llamadas a la acción.</p></div>
+          <div class="card" style="padding:16px"><strong>Contraste</strong><p class="muted">Fondos oscuros y texto claro para legibilidad.</p></div>
         </div>
       </div>
     </div>
   </main>
 
+  <section id="acerca">
+    <div class="container">
+      <h2 class="section-title"><span class="dot"></span> Acerca del club</h2>
+      <p class="muted">Red Hawks es un club de baloncesto fundado en Bogotá por el coach <strong>Juan Carlos Mora</strong>. Es un club de formación integral en baloncesto para <strong>niños y niñas entre 9 y 14 años</strong>.</p>
+    </div>
+  </section>
+
   <section id="servicios">
     <div class="container">
-      <h2>Qué puedes poner aquí</h2>
-      <div class="grid features">
-        <div class="card"><strong>Portafolio</strong><p class="muted">Proyectos, fotos y enlaces.</p></div>
-        <div class="card"><strong>Negocio local</strong><p class="muted">Horario, dirección y menú.</p></div>
-        <div class="card"><strong>Blog sencillo</strong><p class="muted">Artículos en HTML/Markdown.</p></div>
-        <div class="card"><strong>Landing</strong><p class="muted">Promociona un producto o evento.</p></div>
+      <h2 class="section-title"><span class="dot"></span> Servicios</h2>
+      <div class="card">
+        <p><strong>Entrenamientos – Sábados</strong></p>
+        <ul>
+          <li>9:00–10:30 am – <strong>Categoría Infantil</strong></li>
+          <li>11:00–12:30 pm – <strong>Categoría Juvenil</strong></li>
+        </ul>
+        <p class="muted" style="margin-top:8px">Sesiones enfocadas en fundamentos, coordinación, toma de decisiones y trabajo en equipo.</p>
       </div>
     </div>
   </section>
 
-  <section id="acerca">
+  <section id="costo">
     <div class="container">
-      <h2>Acerca</h2>
-      <p class="muted">Edita este texto para contar quién eres, qué haces y por qué la gente debería contactarte.</p>
-    </div>
-  </section>
-
-  <section id="como">
-    <div class="container">
-      <h2>Cómo publicarlo 100% gratis</h2>
-      <ol class="muted">
-        <li>Crea una cuenta en <strong>GitHub</strong>.</li>
-        <li>Haz un repositorio llamado <span class="kbd">tuusuario.github.io</span>.</li>
-        <li>Sube este archivo como <span class="kbd">index.html</span>.</li>
-        <li>Visita <span class="kbd">https://tuusuario.github.io</span> y listo ✨.</li>
-      </ol>
-      <p class="muted">Alternativas sin costo: <strong>Cloudflare Pages</strong>, <strong>Netlify</strong> o <strong>Vercel</strong> usando su plan gratuito y un subdominio.</p>
+      <h2 class="section-title"><span class="dot"></span> Costo</h2>
+      <div class="card">
+        <p style="font-size:28px;margin:0 0 8px"><strong>$30.000 COP</strong> por sesión</p>
+        <p class="muted">Incluye evaluación inicial y seguimiento por niveles.</p>
+      </div>
     </div>
   </section>
 
   <section id="contacto">
     <div class="container">
-      <h2>Contacto</h2>
+      <h2 class="section-title"><span class="dot"></span> Contacto</h2>
       <div class="card">
-        <p>¿Dudas o cotizaciones? Escríbeme:</p>
-        <p><a href="mailto:tuemail@ejemplo.com" class="btn">Enviar correo</a></p>
-        <p class="muted" style="margin-top:8px">También puedes reemplazar el botón por tus redes sociales.</p>
+        <p>¿Listo para unirte a Red Hawks?</p>
+        <p><a class="btn" href="https://wa.me/573002102230" target="_blank" rel="noopener">WhatsApp: +57 300 2102230</a></p>
+        <p class="muted">Escríbenos por WhatsApp para resolver dudas y agendar tu primera sesión.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container">© <span id="year"></span> Mi Sitio — Hecho con ♥ y HTML gratis.</div>
+    <div class="container">© <span id="year"></span> Red Hawks — Escuela de formación en baloncesto y valores.</div>
   </footer>
 
   <script>
