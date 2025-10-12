@@ -5,18 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Red Hawks Basketball Club</title>
   <meta name="description" content="Escuela de formación en baloncesto y valores – Red Hawks Bogotá" />
+
   <style>
-    /* 🎨 Paleta basada en el logo Red Hawks */
+    /* 🎨 PALETA DE COLORES DEL SITIO
+       Se definen variables reutilizables para mantener coherencia visual */
     :root{
-      --bg:#42050F;
-      --surface:rgba(31,42,61,0.85);
-      --txt:#f8fafc;
-      --muted:#cbd5e1;
-      --red:#e11d48;
-      --orange:#f97316;
-      --ring:#ef4444;
+      --bg:#42050F; /* color base del fondo (rojo oscuro) */
+      --surface:rgba(31,42,61,0.85); /* color semitransparente de tarjetas */
+      --txt:#f8fafc; /* color de texto principal */
+      --muted:#cbd5e1; /* texto secundario */
+      --red:#e11d48; /* rojo corporativo */
+      --orange:#f97316; /* naranja de acento */
+      --ring:#ef4444; /* rojo para bordes y resaltados */
     }
 
+    /* 🧱 RESETEO BÁSICO Y CONFIGURACIÓN DE FUENTES */
     *{box-sizing:border-box}
 
     html, body {
@@ -27,67 +30,116 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
     }
 
-    /* 🏀 Fondo con overlay oscuro e imagen fija */
+    /* 🏀 FONDO FIJO CON LA IMAGEN DE LA CANCHA Y UN OVERLAY OSCURO */
     body::before {
       content: "";
       position: fixed;
-      inset: 0;
-      z-index: -1;
+      inset: 0; /* cubre toda la pantalla */
+      z-index: -1; /* se coloca detrás del contenido */
       background-image:
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("./cancha-fondo.png");
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), /* capa oscura encima */
+        url("./cancha-fondo.png"); /* imagen del fondo */
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-attachment: fixed;
+      background-attachment: fixed; /* efecto de fondo fijo al hacer scroll */
     }
 
+    /* 🎯 ENLACES */
     a{color:var(--orange);text-decoration:none}
     a:hover{text-decoration:underline}
 
+    /* 📦 CONTENEDOR CENTRALIZADO */
     .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;position:sticky;top:0;background:rgba(24,34,53,.9);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.06);z-index:10}
+
+    /* 🧭 BARRA DE NAVEGACIÓN FIJA SUPERIOR */
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:14px 24px;
+      position:sticky;top:0;
+      background:rgba(24,34,53,.9); /* fondo oscuro translúcido */
+      backdrop-filter:blur(6px); /* efecto de desenfoque */
+      border-bottom:1px solid rgba(255,255,255,.06);
+      z-index:10;
+    }
+
+    /* 🔥 LOGO Y NOMBRE DE LA MARCA EN EL HEADER */
     .brand{display:flex;align-items:center;gap:12px;font-weight:800}
     .brand img{width:44px;height:44px;object-fit:contain}
     .brand span{letter-spacing:.5px}
+
+    /* 🔗 LINKS DE NAVEGACIÓN */
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
     nav a{font-weight:700;color:var(--txt)}
     nav a:hover{color:var(--orange)}
 
+    /* 🎯 SECCIÓN PRINCIPAL (HERO) */
     .hero{padding:80px 24px}
     .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
-    .card{background:var(--surface);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:24px}
+
+    /* 🃏 TARJETAS DE CONTENIDO */
+    .card{
+      background:var(--surface);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:24px;
+    }
+
+    /* 📝 TITULOS Y PÁRRAFOS */
     h1{font-size:clamp(28px,6vw,48px);line-height:1.1;margin:0 0 12px}
     h2{font-size:clamp(22px,4vw,32px);margin:0 0 12px}
     p{color:var(--muted);line-height:1.6}
 
-    .btn{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--orange));color:white;font-weight:900;border:none;box-shadow:0 0 0 0 rgba(239,68,68,0);transition:transform .08s ease, box-shadow .2s}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px -6px rgba(239,68,68,.35)}
+    /* 🔘 BOTONES PRINCIPALES */
+    .btn{
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--red),var(--orange));
+      color:white;font-weight:900;border:none;
+      transition:transform .08s ease, box-shadow .2s;
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 8px 24px -6px rgba(239,68,68,.35);
+    }
 
-    .grid{display:grid;gap:18px}
-
+    /* 🎛️ CONFIGURACIÓN DE SECCIONES GENERALES */
     section{padding:28px 20px}
     .section-title{display:flex;align-items:center;gap:10px}
-    .section-title .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--orange))}
+    .section-title .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:linear-gradient(135deg,var(--red),var(--orange))
+    }
 
+    /* 🔽 REDUCE ESPACIADO ENTRE SECCIONES */
     section + section {
-  margin-top: -5px; /* elimina espacio extra entre secciones */
-}
+      margin-top: -5px;
+    }
 
+    /* ⚽ PIE DE PÁGINA */
+    footer{
+      padding:32px 24px;
+      border-top:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
+      text-align:center;
+    }
 
-    footer{padding:32px 24px;border-top:1px solid rgba(255,255,255,.06);color:var(--muted);text-align:center}
-
+    /* 🏀 LISTA PERSONALIZADA CON ICONO DE BALÓN */
     .list-ball{list-style:none;padding-left:0}
     .list-ball li{position:relative;padding-left:34px;margin:10px 0}
     .list-ball li::before{content:"🏀";position:absolute;left:0;top:0}
 
+    /* 📱 VERSIÓN RESPONSIVA PARA CELULARES */
     @media (max-width: 860px){
       .hero .wrap{grid-template-columns:1fr}
       .brand img{width:36px;height:36px}
     }
   </style>
 </head>
+
 <body>
+  <!-- 🧭 ENCABEZADO CON LOGO Y MENÚ -->
   <header>
     <div class="brand">
       <img src="redhawks-logo.png" alt="Red Hawks Logo" />
@@ -104,19 +156,27 @@
     </nav>
   </header>
 
+  <!-- 🏀 SECCIÓN HERO: Presentación principal -->
   <main class="hero">
     <div class="container wrap">
+      <!-- Texto principal del hero -->
       <div>
         <h1>
           Red Hawks Bogotá
-          <span style="background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent">— escuela de baloncesto y valores</span>
+          <span style="background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent">
+            — escuela de baloncesto y valores
+          </span>
         </h1>
         <p>Formamos niños y niñas entre 9 y 14 años en fundamentos de baloncesto, trabajo en equipo y disciplina. ¡Entrena con nosotros y eleva tu juego!</p>
+
+        <!-- Botones de acción -->
         <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
           <a class="btn" href="#contacto">Inscríbete por WhatsApp</a>
           <a class="btn" href="#servicios" style="background:transparent;border:1px solid var(--ring);color:#fff">Ver horarios</a>
         </div>
       </div>
+
+      <!-- Tarjeta con información de servicios -->
       <div class="card" id="servicios">
         <h2 class="section-title"><span class="dot"></span> Servicios</h2>
         <ul class="list-ball">
@@ -124,11 +184,14 @@
           <li>9:00–10:30 am — <strong>Categoría Infantil</strong></li>
           <li>11:00–12:30 pm — <strong>Categoría Juvenil</strong></li>
         </ul>
-        <p class="muted" style="margin-top:8px">Sesiones por niveles: fundamentos, coordinación, toma de decisiones y juego en equipo.</p>
+        <p class="muted" style="margin-top:8px">
+          Sesiones por niveles: fundamentos, coordinación, toma de decisiones y juego en equipo.
+        </p>
       </div>
     </div>
   </main>
 
+  <!-- 🏅 SECCIÓN: ACERCA DEL CLUB -->
   <section id="acerca">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Acerca del club</h2>
@@ -136,6 +199,7 @@
     </div>
   </section>
 
+  <!-- 💰 SECCIÓN: COSTO DE ENTRENAMIENTOS -->
   <section id="costo">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Costo</h2>
@@ -146,6 +210,7 @@
     </div>
   </section>
 
+  <!-- 📍 SECCIÓN: UBICACIÓN CON MAPA EMBEBIDO -->
   <section id="ubicacion">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Ubicación</h2>
@@ -154,6 +219,7 @@
         <p><strong>Dirección:</strong> Calle 136 - 74-01, Bogotá</p>
         <p><a class="btn" href="https://maps.app.goo.gl/9K6avFsTPCPx8HVe6" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
 
+        <!-- Mapa centrado en las coordenadas exactas -->
         <div style="margin-top:16px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
           <iframe
             title="Mapa Red Hawks"
@@ -170,6 +236,7 @@
     </div>
   </section>
 
+  <!-- 📱 SECCIÓN: CONTACTO -->
   <section id="contacto">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Contacto</h2>
@@ -181,10 +248,12 @@
     </div>
   </section>
 
+  <!-- ⚽ PIE DE PÁGINA CON AÑO AUTOMÁTICO -->
   <footer>
     <div class="container">© <span id="year"></span> Red Hawks — Escuela de formación en baloncesto y valores.</div>
   </footer>
 
+  <!-- 📅 SCRIPT: Inserta el año actual automáticamente -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
