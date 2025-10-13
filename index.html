@@ -18,6 +18,7 @@
       --red:#e11d48;
       --orange:#f97316;
       --ring:#ef4444;
+      --wa1:#128C7E; --wa2:#25D366;
     }
 
     *{box-sizing:border-box}
@@ -105,36 +106,8 @@
     p{color:var(--muted); line-height:1.6}
 
     /* =========================================================
-       🔘 BOTÓN WHATSAPP (ícono centrado arriba del texto)
+       🔘 BOTONES
        ========================================================= */
-    .btn-wa {
-      display: flex;
-      flex-direction: column;      /* ícono arriba, texto abajo */
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      background: linear-gradient(135deg, #128C7E, #25D366);
-      color: #fff;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 20px;
-      text-decoration: none;
-      box-shadow: 0 6px 20px -8px rgba(18, 140, 126, 0.6);
-      transition: transform 0.1s ease, box-shadow 0.2s;
-    }
-    .btn-wa:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px -6px rgba(18, 140, 126, 0.75);
-    }
-    .btn-wa .wa-icon {
-      width: 28px;     /* tamaño del ícono */
-      height: 28px;
-      display: block;
-      filter: none;    /* mantenemos su color original verde/blanco del SVG */
-    }
-
-    /* Botón genérico (otros botones) */
     .btn{
       display:inline-block; padding:12px 18px; border-radius:12px;
       background:linear-gradient(135deg,var(--red),var(--orange));
@@ -142,6 +115,17 @@
       transition:transform .08s ease, box-shadow .2s;
     }
     .btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px -6px rgba(239,68,68,.35)}
+
+    /* WhatsApp (ícono centrado arriba del texto) */
+    .btn-wa {
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+      background:linear-gradient(135deg,var(--wa1),var(--wa2)); color:#fff; font-weight:700;
+      border:none; border-radius:12px; padding:14px 20px; text-decoration:none;
+      box-shadow:0 6px 20px -8px rgba(18,140,126,.6);
+      transition:transform .1s ease, box-shadow .2s;
+    }
+    .btn-wa:hover{ transform:translateY(-1px); box-shadow:0 8px 24px -6px rgba(18,140,126,.75); }
+    .btn-wa .wa-icon{ width:28px; height:28px; display:block; filter:none; }
 
     section{padding:28px 20px}
     .section-title{display:flex; align-items:center; gap:10px}
@@ -158,32 +142,31 @@
        🎒 REQUISITOS: texto + logo alineados
        ========================================================= */
     .requirements-wrap{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
+      display:flex; align-items:center; justify-content:space-between; gap:24px;
     }
-    .requirements-text{
-      flex:1;
-      min-width:260px;
-      line-height:1.75;
-    }
+    .requirements-text{ flex:1; min-width:260px; line-height:1.75; }
     .requirements-text ol{ margin-top:12px; }
-    .note{
-      margin-top:14px;
-      color:#f9c74f;
-      font-weight:600;
-    }
+    .note{ margin-top:14px; color:#f9c74f; font-weight:600; }
     .requirements-logo{ flex-shrink:0; }
     .requirements-logo img{
-      width:320px;
-      max-width:32vw;
-      height:auto;
-      display:block;
-      border-radius:50%;
+      width:320px; max-width:32vw; height:auto; display:block; border-radius:50%;
       transition:transform .25s ease;
     }
     .requirements-logo img:hover{ transform:scale(1.04); }
+
+    /* =========================================================
+       🧾 INSCRIPCIÓN: estilos del embed y tarjeta
+       ========================================================= */
+    .form-actions{
+      display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:10px;
+    }
+    .form-embed{
+      margin-top:16px; border-radius:14px; overflow:hidden;
+      border:1px solid rgba(255,255,255,.08); background:#0f172a;
+    }
+    .form-embed iframe{
+      width:100%; height:720px; border:0;
+    }
 
     /* =========================================================
        📱 RESPONSIVE + MENÚ HAMBURGUESA
@@ -205,6 +188,7 @@
       .brand img{width:48px; height:48px;}
       .requirements-wrap{ flex-direction:column; align-items:flex-start; }
       .requirements-logo img{ width:200px; max-width:60vw; margin-top:8px; }
+      .form-embed iframe{ height:860px; } /* más alto en móvil para scroll */
     }
   </style>
 </head>
@@ -223,7 +207,8 @@
       <ul id="menu">
         <li><a href="#acerca">Acerca</a></li>
         <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#costo">Costo</a></li>
+        <!-- 👇 cambiamos “Costo” por “Inscripción” -->
+        <li><a href="#inscripcion">Inscripción</a></li>
         <li><a href="#personal">Personal</a></li>
         <li><a href="#requisitos">Requisitos</a></li>
         <li><a href="#ubicacion">Ubicación</a></li>
@@ -245,7 +230,8 @@
         <p>● Formamos niños y niñas entre <strong>9 y 15 años</strong> en fundamentos de baloncesto, trabajo en equipo y disciplina.</p>
         <p><strong>● Aprovecha tu tiempo libre aprendiendo basketball.</strong><br>Desarrolla todo tu potencial en esta maravillosa disciplina deportiva.</p>
         <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
-          <a class="btn" href="#contacto">Inscríbete por WhatsApp</a>
+          <a class="btn" href="#inscripcion">Inscríbete</a>
+          <a class="btn" href="#contacto" style="background:transparent;border:1px solid var(--ring)">WhatsApp</a>
         </div>
       </div>
 
@@ -271,14 +257,32 @@
     </div>
   </section>
 
-  <!-- ===== Costo y pagos ===== -->
-  <section id="costo">
+  <!-- ===== 🧾 INSCRIPCIÓN (reemplaza la sección de Costo/Pagos) ===== -->
+  <section id="inscripcion">
     <div class="container">
-      <h2 class="section-title"><span class="dot"></span> Costo y pagos</h2>
+      <h2 class="section-title"><span class="dot"></span> Inscripción</h2>
       <div class="card">
+        <!-- Info que ya tenías de costo/pagos -->
         <p style="font-size:28px;margin:0 0 8px"><strong>$30.000 COP</strong> por sesión</p>
-        <p>Inscripción totalmente gratuita. La sesión incluye una evaluación inicial y seguimiento por niveles.</p>
-        <p><strong>Métodos de pago:</strong> Daviplata y Nequi: 321-4583332.</p>
+        <p style="margin:0 0 6px">Inscripción totalmente gratuita. La sesión incluye una evaluación inicial y seguimiento por niveles.</p>
+        <p style="margin:0"><strong>Métodos de pago:</strong> Daviplata y Nequi: 321-4583332.</p>
+
+        <!-- Acciones: botón principal al formulario -->
+        <div class="form-actions">
+          <a class="btn" href="https://forms.gle/vb81jGQjzJsJBwNEA" target="_blank" rel="noopener">
+            Inscríbete aquí
+          </a>
+          <span style="color:var(--muted)">Se abrirá el formulario en una pestaña nueva.</span>
+        </div>
+
+        <!-- Intento de formulario embebido (si Google lo permite).
+             Si no se muestra, usa el botón de arriba. -->
+        <div class="form-embed">
+          <iframe
+            title="Formulario de inscripción Red Hawks"
+            src="https://forms.gle/vb81jGQjzJsJBwNEA">
+          </iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -349,7 +353,7 @@
       <h2 class="section-title"><span class="dot"></span> Contacto</h2>
       <div class="card">
         <p>¿Listo para unirte a Red Hawks? <strong>¡Cupos limitados!</strong></p>
-        <div class="actions">
+        <div class="actions" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
           <!-- Botón de WhatsApp con ícono centrado -->
           <a
             class="btn-wa"
@@ -363,6 +367,9 @@
             />
             ¡Escríbenos por WhatsApp!
           </a>
+          <!-- Si quieres agregar correo:
+          <a class="btn" href="mailto:tu_correo@ejemplo.com">Enviar correo</a>
+          -->
         </div>
       </div>
     </div>
