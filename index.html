@@ -104,12 +104,37 @@
     h2{font-size:clamp(22px,4vw,32px); margin:0 0 12px}
     p{color:var(--muted); line-height:1.6}
 
-    .btn{
-      display:inline-block; padding:12px 18px; border-radius:12px;
-      background:linear-gradient(135deg,var(--red),var(--orange));
-      color:#fff; font-weight:900; border:none;
-      transition:transform .08s ease, box-shadow .2s;
-    }
+/* Botón de WhatsApp centrado */
+.btn-wa {
+  display: flex;
+  flex-direction: column; /* ícono arriba, texto abajo */
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #128C7E, #25D366);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px -8px rgba(18, 140, 126, 0.6);
+  transition: transform 0.1s ease, box-shadow 0.2s;
+}
+
+.btn-wa:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px -6px rgba(18, 140, 126, 0.75);
+}
+
+/* Ícono centrado arriba del texto */
+.btn-wa .wa-icon {
+  width: 28px;   /* puedes ajustar el tamaño */
+  height: 28px;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
     .btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px -6px rgba(239,68,68,.35)}
 
     section{padding:28px 20px}
