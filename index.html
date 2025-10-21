@@ -7,194 +7,99 @@
   <meta name="description" content="Escuela de formación en baloncesto y valores – Red Hawks Bogotá" />
 
   <style>
-    /* =========================================================
-       🎨 PALETA DE COLORES (variables reutilizables)
-       ========================================================= */
     :root{
-      --bg:#42050F;
-      --surface:rgba(31,42,61,0.85);
-      --txt:#f8fafc;
-      --muted:#cbd5e1;
-      --red:#e11d48;
-      --orange:#f97316;
-      --ring:#ef4444;
-      --wa1:#128C7E; --wa2:#25D366;
+      --bg:#42050F; --surface:rgba(31,42,61,0.85); --txt:#f8fafc; --muted:#cbd5e1;
+      --red:#e11d48; --orange:#f97316; --ring:#ef4444; --wa1:#128C7E; --wa2:#25D366;
     }
-
     *{box-sizing:border-box}
     html{ --base-font-size:20px; font-size:var(--base-font-size); }
-    body{
-      margin:0; padding:0; height:100%; color:var(--txt);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
-    }
-
-    /* =========================================================
-       🏀 FONDO GLOBAL
-       ========================================================= */
-    body::before{
-      content:""; position:fixed; inset:0; z-index:-1;
-      background-image:
-        linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-        url("./cancha-fondo.png");
-      background-position:center center;
-      background-repeat:no-repeat;
-      background-size:cover;
-      background-attachment:fixed;
-    }
-
-    a{color:var(--orange); text-decoration:none}
-    a:hover{text-decoration:underline}
-
+    body{ margin:0; padding:0; height:100%; color:var(--txt);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;}
+    body::before{content:""; position:fixed; inset:0; z-index:-1;
+      background-image:linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url("./cancha-fondo.png");
+      background-position:center; background-repeat:no-repeat; background-size:cover; background-attachment:fixed;}
+    a{color:var(--orange); text-decoration:none} a:hover{text-decoration:underline}
     .container{max-width:1100px; margin:0 auto; padding:12px}
 
-    /* =========================================================
-       🧭 HEADER STICKY + NAV
-       ========================================================= */
-    header{
-      display:flex; align-items:center; justify-content:space-between; gap:8px;
-      padding:8px 24px; position:sticky; top:0; z-index:20;
-      background:rgba(24,34,53,.9); backdrop-filter:blur(6px);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
+    header{display:flex; align-items:center; justify-content:space-between; gap:8px;
+      padding:8px 24px; position:sticky; top:0; z-index:20; background:rgba(24,34,53,.9);
+      backdrop-filter:blur(6px); border-bottom:1px solid rgba(255,255,255,.06)}
     .brand{display:flex; align-items:center; gap:12px; font-weight:800}
     .brand img{width:60px; height:60px; object-fit:contain}
-    .brand span{letter-spacing:.5px}
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    nav a{font-weight:700; color:var(--txt)} nav a:hover{color:var(--orange)}
+    .menu-toggle{display:none; width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,.12);
+      background:rgba(31,42,61,.55); justify-content:center; align-items:center; cursor:pointer}
+    .menu-toggle .bar{position:relative; width:22px; height:2px; background:#fff; border-radius:2px}
+    .menu-toggle .bar::before,.menu-toggle .bar::after{content:""; position:absolute; left:0; width:22px; height:2px; background:#fff; border-radius:2px}
+    .menu-toggle .bar::before{top:-7px} .menu-toggle .bar::after{bottom:-7px}
+    .menu-toggle.open .bar{background:transparent} .menu-toggle.open .bar::before{top:0; transform:rotate(45deg)}
+    .menu-toggle.open .bar::after{bottom:0; transform:rotate(-45deg)}
 
-    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0;}
-    nav a{font-weight:700; color:var(--txt)}
-    nav a:hover{color:var(--orange)}
-
-    /* Botón hamburguesa (móvil) */
-    .menu-toggle{
-      display:none; width:40px; height:40px; border-radius:10px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(31,42,61,.55);
-      justify-content:center; align-items:center; cursor:pointer;
-      transition:background .2s;
-    }
-    .menu-toggle:hover{background:rgba(31,42,61,.75)}
-    .menu-toggle .bar{
-      position:relative; width:22px; height:2px; background:#fff; border-radius:2px;
-      transition:transform .2s, background .2s;
-    }
-    .menu-toggle .bar::before,
-    .menu-toggle .bar::after{
-      content:""; position:absolute; left:0; width:22px; height:2px; background:#fff; border-radius:2px;
-      transition:transform .2s, top .2s, bottom .2s, opacity .2s;
-    }
-    .menu-toggle .bar::before{ top:-7px; }
-    .menu-toggle .bar::after{ bottom:-7px; }
-    .menu-toggle.open .bar{ background:transparent; }
-    .menu-toggle.open .bar::before{ top:0; transform:rotate(45deg); }
-    .menu-toggle.open .bar::after{ bottom:0; transform:rotate(-45deg); }
-
-    /* =========================================================
-       🦅 HERO
-       ========================================================= */
     .hero{padding:80px 24px}
     .hero .wrap{display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center}
 
-    .card{
-      background:var(--surface);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:18px;
-      padding:24px;
-    }
-
+    .card{background:var(--surface); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:24px}
     h1{font-size:clamp(28px,6vw,48px); line-height:1.1; margin:0 0 12px}
     h2{font-size:clamp(22px,4vw,32px); margin:0 0 12px}
     p{color:var(--muted); line-height:1.6}
 
-    /* =========================================================
-       🔘 BOTONES
-       ========================================================= */
-    .btn{
-      display:inline-block; padding:12px 18px; border-radius:12px;
-      background:linear-gradient(135deg,var(--red),var(--orange));
-      color:#fff; font-weight:900; border:none;
-      transition:transform .08s ease, box-shadow .2s;
-    }
+    .btn{display:inline-block; padding:12px 18px; border-radius:12px;
+      background:linear-gradient(135deg,var(--red),var(--orange)); color:#fff; font-weight:900; border:none;
+      transition:transform .08s ease, box-shadow .2s}
     .btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px -6px rgba(239,68,68,.35)}
 
-    /* WhatsApp (ícono centrado arriba del texto) */
-    .btn-wa {
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+    .btn-wa{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
       background:linear-gradient(135deg,var(--wa1),var(--wa2)); color:#fff; font-weight:700;
       border:none; border-radius:12px; padding:14px 20px; text-decoration:none;
-      box-shadow:0 6px 20px -8px rgba(18,140,126,.6);
-      transition:transform .1s ease, box-shadow .2s;
-    }
-    .btn-wa:hover{ transform:translateY(-1px); box-shadow:0 8px 24px -6px rgba(18,140,126,.75); }
-    .btn-wa .wa-icon{ width:28px; height:28px; display:block; filter:none; }
+      box-shadow:0 6px 20px -8px rgba(18,140,126,.6)}
+    .btn-wa .wa-icon{width:28px; height:28px; display:block}
 
     section{padding:28px 20px}
     .section-title{display:flex; align-items:center; gap:10px}
     .section-title .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--red),var(--orange))}
     section + section{margin-top:-20px}
-
     footer{padding:32px 24px; border-top:1px solid rgba(255,255,255,.06); color:var(--muted); text-align:center}
-
     .list-ball{list-style:none; padding-left:0}
     .list-ball li{position:relative; padding-left:34px; margin:10px 0}
     .list-ball li::before{content:"🏀"; position:absolute; left:0; top:0}
 
-    /* =========================================================
-       🎒 REQUISITOS: texto + logo alineados
-       ========================================================= */
-    .requirements-wrap{
-      display:flex; align-items:center; justify-content:space-between; gap:24px;
-    }
-    .requirements-text{ flex:1; min-width:260px; line-height:1.75; }
-    .requirements-text ol{ margin-top:12px; }
-    .note{ margin-top:14px; color:#f9c74f; font-weight:600; }
-    .requirements-logo{ flex-shrink:0; }
-    .requirements-logo img{
-      width:320px; max-width:32vw; height:auto; display:block; border-radius:50%;
-      transition:transform .25s ease;
-    }
-    .requirements-logo img:hover{ transform:scale(1.04); }
+    /* ===== Requisitos ===== */
+    .requirements-wrap{display:flex; align-items:center; justify-content:space-between; gap:24px}
+    .requirements-text{flex:1; min-width:260px; line-height:1.75}
+    .note{margin-top:14px; color:#f9c74f; font-weight:600}
+    .requirements-logo img{width:320px; max-width:32vw; height:auto; border-radius:50%}
 
-    /* =========================================================
-       🧾 INSCRIPCIÓN: estilos del embed y tarjeta
-       ========================================================= */
-    .form-actions{
-      display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:10px;
-    }
-    .form-embed{
-      margin-top:16px; border-radius:14px; overflow:hidden;
-      border:1px solid rgba(255,255,255,.08); background:#0f172a;
-    }
-    .form-embed iframe{
-      width:100%; height:720px; border:0;
-    }
+    /* ===== Inscripción (embed) ===== */
+    .form-actions{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:10px}
+    .form-embed{margin-top:16px; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:#0f172a}
+    .form-embed iframe{width:100%; height:720px; border:0}
 
-    /* =========================================================
-       📱 RESPONSIVE + MENÚ HAMBURGUESA
-       ========================================================= */
+    /* ===== NUEVO: Acerca con imagen ===== */
+    .about-wrap{display:grid; grid-template-columns:1.2fr .8fr; gap:20px; align-items:center}
+    .about-media{justify-self:end}
+    .about-media img{width:100%; max-width:440px; height:auto; border-radius:18px;
+      border:1px solid rgba(255,255,255,.08); box-shadow:0 14px 40px -18px rgba(0,0,0,.55); object-fit:cover}
+
+    /* ===== Responsive ===== */
     @media (max-width:820px){
-      .menu-toggle{display:flex;}
-      nav ul{
-        display:none; position:absolute; right:0; top:56px; z-index:25;
-        flex-direction:column; gap:10px;
-        background:rgba(24,34,53,.96);
-        padding:14px 16px; border-radius:14px;
-        border:1px solid rgba(255,255,255,.08);
-        min-width:220px;
-        box-shadow:0 12px 30px -10px rgba(0,0,0,.5);
-      }
-      nav ul.show{display:flex;}
-      nav a{padding:8px 6px; font-weight:700;}
-      header{gap:10px; padding:10px 16px;}
-      .brand img{width:48px; height:48px;}
-      .requirements-wrap{ flex-direction:column; align-items:flex-start; }
-      .requirements-logo img{ width:200px; max-width:60vw; margin-top:8px; }
-      .form-embed iframe{ height:860px; } /* más alto en móvil para scroll */
+      .menu-toggle{display:flex}
+      nav ul{display:none; position:absolute; right:0; top:56px; z-index:25; flex-direction:column; gap:10px;
+        background:rgba(24,34,53,.96); padding:14px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.08); min-width:220px}
+      nav ul.show{display:flex}
+      header{gap:10px; padding:10px 16px}
+      .brand img{width:48px; height:48px}
+      .hero .wrap, .about-wrap{grid-template-columns:1fr}
+      .about-media{justify-self:stretch}
+      .requirements-wrap{flex-direction:column; align-items:flex-start}
+      .requirements-logo img{width:200px; max-width:60vw; margin-top:8px}
+      .form-embed iframe{height:860px}
     }
   </style>
 </head>
 
 <body>
-  <!-- ===== Header con navegación (hamburguesa en móvil) ===== -->
+  <!-- Header -->
   <header>
     <div class="brand">
       <img src="redhawks-logo-transparent-background2.png" alt="Red Hawks Logo" />
@@ -216,7 +121,7 @@
     </nav>
   </header>
 
-  <!-- ===== Hero con CTA + horarios resumidos ===== -->
+  <!-- Hero -->
   <main class="hero">
     <div class="container wrap">
       <div>
@@ -238,7 +143,7 @@
         <h2 class="section-title"><span class="dot"></span> Servicios / Horarios</h2>
         <ul class="list-ball">
           <li><strong>Días de entrenamiento:</strong> Sábados</li>
-          <li><strong>Adultos:</strong> 7:00 – 8:30 a.m.</li>
+          <li><strong>Adultos:</strong> <u>7:00 – 8:30 a.m.</u></li>
           <li><strong>Grupo A (9–11 años):</strong> 8:30 – 10:00 a.m.</li>
           <li><strong>Grupo B (12–15 años):</strong> 10:00 – 11:30 a.m.</li>
         </ul>
@@ -247,17 +152,32 @@
     </div>
   </main>
 
-  <!-- ===== Acerca ===== -->
+  <!-- Acerca + IMAGEN -->
   <section id="acerca">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Acerca de Red Hawks</h2>
-      <p>Red Hawks es una escuela de baloncesto fundada en Bogotá por el coach <strong>Juan Carlos Mora</strong>, quien cuenta con más de veinte años de experiencia formando niños y jóvenes en el <strong>Colegio San Jorge de Inglaterra (Saint George’s School)</strong>.</p>
-      <p>La filosofía de entrenamiento del coach Mora está centrada en el crecimiento integral de sus jugadores, combinando la enseñanza técnica y cognoscitiva del juego con una formación en valores y principios morales.</p>
-      <p>Ha sido varias veces campeón con sus equipos en todas las categorías de <strong>UNCOLI</strong> y <strong>ASOCOLDEP</strong>; además, cuenta con experiencia en campamentos internacionales de equipos NBA como <em>San Antonio Spurs</em> y <em>Dallas Mavericks</em>.</p>
+
+      <div class="about-wrap">
+        <!-- Texto -->
+        <div class="about-text">
+          <p>Red Hawks es una escuela de baloncesto fundada en Bogotá por el coach <strong>Juan Carlos Mora</strong>, quien cuenta con más de veinte años de experiencia formando niños y jóvenes en el <strong>Colegio San Jorge de Inglaterra (Saint George’s School)</strong>.</p>
+          <p>La filosofía de entrenamiento del coach Mora está centrada en el crecimiento integral de sus jugadores, combinando la enseñanza técnica y cognoscitiva del juego con una formación en valores y principios morales.</p>
+          <p>Ha sido varias veces campeón con sus equipos en todas las categorías de <strong>UNCOLI</strong> y <strong>ASOCOLDEP</strong>; además, cuenta con experiencia en campamentos internacionales de equipos NBA como <em>San Antonio Spurs</em> y <em>Dallas Mavericks</em>.</p>
+        </div>
+
+        <!-- Imagen (reemplaza el src por tu archivo) -->
+        <figure class="about-media">
+          <img
+            src="./about-redhawks.jpg"
+            alt="Entrenamiento de Red Hawks: niños practicando en la cancha"
+            loading="lazy"
+            width="440" height="300">
+        </figure>
+      </div>
     </div>
   </section>
 
-  <!-- ===== 🧾 INSCRIPCIÓN ===== -->
+  <!-- Inscripción -->
   <section id="inscripcion">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Inscripción</h2>
@@ -267,24 +187,18 @@
         <p style="margin:0"><strong>Métodos de pago:</strong> Daviplata y Nequi: 321-4583332.</p>
 
         <div class="form-actions">
-          <a class="btn" href="https://forms.gle/vb81jGQjzJsJBwNEA" target="_blank" rel="noopener">
-            Inscríbete aquí
-          </a>
+          <a class="btn" href="https://forms.gle/vb81jGQjzJsJBwNEA" target="_blank" rel="noopener">Inscríbete aquí</a>
           <span style="color:var(--muted)">Se abrirá el formulario en una pestaña nueva.</span>
         </div>
 
-        <!-- Si el embed no carga por políticas de Google, usa el botón de arriba -->
         <div class="form-embed">
-          <iframe
-            title="Formulario de inscripción Red Hawks"
-            src="https://forms.gle/vb81jGQjzJsJBwNEA">
-          </iframe>
+          <iframe title="Formulario de inscripción Red Hawks" src="https://forms.gle/vb81jGQjzJsJBwNEA"></iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Personal ===== -->
+  <!-- Personal -->
   <section id="personal">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Personal a cargo de los entrenamientos</h2>
@@ -295,7 +209,7 @@
     </div>
   </section>
 
-  <!-- ===== Requisitos (con logo dentro de la tarjeta) ===== -->
+  <!-- Requisitos -->
   <section id="requisitos">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Elementos para cada sesión de entrenamiento</h2>
@@ -323,7 +237,7 @@
     </div>
   </section>
 
-  <!-- ===== Ubicación ===== -->
+  <!-- Ubicación -->
   <section id="ubicacion">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Ubicación</h2>
@@ -332,33 +246,25 @@
         <p><strong>Dirección:</strong> Calle 136 - 74-01, Bogotá</p>
         <p><a class="btn" href="https://maps.app.goo.gl/9K6avFsTPCPx8HVe6" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
         <div style="margin-top:16px; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.08)">
-          <iframe
-            title="Mapa Red Hawks" width="100%" height="360" style="border:0" loading="lazy" allowfullscreen
+          <iframe title="Mapa Red Hawks" width="100%" height="360" style="border:0" loading="lazy" allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=4.727796571334193,-74.0737870005324&z=18&output=embed">
-          </iframe>
+            src="https://www.google.com/maps?q=4.727796571334193,-74.0737870005324&z=18&output=embed"></iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Contacto ===== -->
+  <!-- Contacto -->
   <section id="contacto">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Contacto</h2>
       <div class="card">
         <p>¿Listo para unirte a Red Hawks? <strong>¡Cupos limitados!</strong></p>
         <div class="actions" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-          <a
-            class="btn-wa"
-            aria-label="Escríbenos por WhatsApp"
+          <a class="btn-wa" aria-label="Escríbenos por WhatsApp"
             href="https://api.whatsapp.com/send?phone=573002102230&text=Hola%2C%20quiero%20saber%20m%C3%A1s%20acerca%20de%20Red%20Hawks"
             target="_blank" rel="noopener">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-              alt="WhatsApp"
-              class="wa-icon"
-            />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-icon" />
             ¡Escríbenos por WhatsApp!
           </a>
         </div>
@@ -366,39 +272,21 @@
     </div>
   </section>
 
-  <!-- ===== Footer ===== -->
   <footer>
     <div class="container">© <span id="year"></span> Red Hawks — Escuela de formación en baloncesto y valores.</div>
   </footer>
 
   <script>
-    // Año automático en el footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Menú hamburguesa
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
 
-    function closeMenu(){
-      menu.classList.remove('show');
-      toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded','false');
-    }
-
-    toggle.addEventListener('click', (e)=>{
-      e.stopPropagation();
-      const isOpen = menu.classList.toggle('show');
-      toggle.classList.toggle('open', isOpen);
-      toggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    menu.querySelectorAll('a').forEach(a=>{ a.addEventListener('click', closeMenu); });
-
-    document.addEventListener('click', (e)=>{
-      if(!menu.contains(e.target) && !toggle.contains(e.target)){ closeMenu(); }
-    });
-
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMenu(); });
+    function closeMenu(){ menu.classList.remove('show'); toggle.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+    toggle.addEventListener('click', (e)=>{ e.stopPropagation(); const isOpen = menu.classList.toggle('show'); toggle.classList.toggle('open', isOpen); toggle.setAttribute('aria-expanded', String(isOpen)); });
+    menu.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeMenu));
+    document.addEventListener('click', (e)=>{ if(!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
   </script>
 </body>
 </html>
