@@ -207,7 +207,6 @@
       <ul id="menu">
         <li><a href="#acerca">Acerca</a></li>
         <li><a href="#servicios">Servicios</a></li>
-        <!-- 👇 cambiamos “Costo” por “Inscripción” -->
         <li><a href="#inscripcion">Inscripción</a></li>
         <li><a href="#personal">Personal</a></li>
         <li><a href="#requisitos">Requisitos</a></li>
@@ -239,8 +238,9 @@
         <h2 class="section-title"><span class="dot"></span> Servicios / Horarios</h2>
         <ul class="list-ball">
           <li><strong>Días de entrenamiento:</strong> Sábados</li>
-          <li><strong>Grupo A:</strong> 8:30 – 10:00 a.m. — Niñas y niños de 9 a 11 años</li>
-          <li><strong>Grupo B:</strong> 10:00 – 11:30 a.m. — Niñas y niños de 12 a 15 años</li>
+          <li><strong>Adultos:</strong> <u>7:00 – 8:30 a.m.</u></li>
+          <li><strong>Grupo A (9–11 años):</strong> 8:30 – 10:00 a.m.</li>
+          <li><strong>Grupo B (12–15 años):</strong> 10:00 – 11:30 a.m.</li>
         </ul>
         <p style="margin-top:8px">Sesiones por niveles: fundamentos, coordinación, toma de decisiones y juego en equipo.</p>
       </div>
@@ -257,17 +257,15 @@
     </div>
   </section>
 
-  <!-- ===== 🧾 INSCRIPCIÓN (reemplaza la sección de Costo/Pagos) ===== -->
+  <!-- ===== 🧾 INSCRIPCIÓN ===== -->
   <section id="inscripcion">
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Inscripción</h2>
       <div class="card">
-        <!-- Info que ya tenías de costo/pagos -->
         <p style="font-size:28px;margin:0 0 8px"><strong>$30.000 COP</strong> por sesión</p>
         <p style="margin:0 0 6px">Inscripción totalmente gratuita. La sesión incluye una evaluación inicial y seguimiento por niveles.</p>
         <p style="margin:0"><strong>Métodos de pago:</strong> Daviplata y Nequi: 321-4583332.</p>
 
-        <!-- Acciones: botón principal al formulario -->
         <div class="form-actions">
           <a class="btn" href="https://forms.gle/vb81jGQjzJsJBwNEA" target="_blank" rel="noopener">
             Inscríbete aquí
@@ -275,8 +273,7 @@
           <span style="color:var(--muted)">Se abrirá el formulario en una pestaña nueva.</span>
         </div>
 
-        <!-- Intento de formulario embebido (si Google lo permite).
-             Si no se muestra, usa el botón de arriba. -->
+        <!-- Si el embed no carga por políticas de Google, usa el botón de arriba -->
         <div class="form-embed">
           <iframe
             title="Formulario de inscripción Red Hawks"
@@ -303,7 +300,6 @@
     <div class="container">
       <h2 class="section-title"><span class="dot"></span> Elementos para cada sesión de entrenamiento</h2>
       <div class="card requirements-wrap">
-        <!-- Texto a la izquierda -->
         <div class="requirements-text">
           <p>Los <strong>participantes de Red Hawks</strong> deben llevar a cada sesión:</p>
           <ol>
@@ -320,7 +316,6 @@
           </ol>
           <p class="note">⚠️ Recomendamos marcar todo con el nombre del participante.</p>
         </div>
-        <!-- Logo a la derecha (dentro de la MISMA tarjeta) -->
         <div class="requirements-logo">
           <img src="https://camilomora767.github.io/radhawks/redhawks-logo-transparent-background2.png" alt="Red Hawks Logo">
         </div>
@@ -354,7 +349,6 @@
       <div class="card">
         <p>¿Listo para unirte a Red Hawks? <strong>¡Cupos limitados!</strong></p>
         <div class="actions" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-          <!-- Botón de WhatsApp con ícono centrado -->
           <a
             class="btn-wa"
             aria-label="Escríbenos por WhatsApp"
@@ -367,9 +361,6 @@
             />
             ¡Escríbenos por WhatsApp!
           </a>
-          <!-- Si quieres agregar correo:
-          <a class="btn" href="mailto:tu_correo@ejemplo.com">Enviar correo</a>
-          -->
         </div>
       </div>
     </div>
@@ -401,22 +392,13 @@
       toggle.setAttribute('aria-expanded', String(isOpen));
     });
 
-    // Cerrar al hacer click en un enlace del menú
-    menu.querySelectorAll('a').forEach(a=>{
-      a.addEventListener('click', closeMenu);
-    });
+    menu.querySelectorAll('a').forEach(a=>{ a.addEventListener('click', closeMenu); });
 
-    // Cerrar al hacer click fuera
     document.addEventListener('click', (e)=>{
-      if(!menu.contains(e.target) && !toggle.contains(e.target)){
-        closeMenu();
-      }
+      if(!menu.contains(e.target) && !toggle.contains(e.target)){ closeMenu(); }
     });
 
-    // Cerrar con ESC
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape') closeMenu();
-    });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMenu(); });
   </script>
 </body>
 </html>
